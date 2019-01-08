@@ -24,6 +24,12 @@ EditorBuildSettings:
     path: Assets/Scenes/Stats.unity
     guid: 0b1abdf5cc8ac9f488ed02429508f4fb
   - enabled: 1
+    path: Assets/Scenes/Mini Games.unity
+    guid: b42d3018aecac2e4f970b4e024cf7cc0
+  - enabled: 1
     path: Assets/Scenes/Bullet Hell.unity
     guid: d504880f9163f81478b3e5f4a80ab728
+  - enabled: 1
+    path: Assets/Scenes/Tower Defense.unity
+    guid: 13a277375c0a0464eb46badfca305236
   m_configObjects: {}

@@ -2034,11 +2034,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: PlayerData
       objectReference: {fileID: 0}
-    - target: {fileID: 6515796966750869878, guid: a32b93439521f5143acfb751ef55b83e,
-        type: 3}
-      propertyPath: clickTotal
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 2958888507202412854, guid: a32b93439521f5143acfb751ef55b83e,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -2092,6 +2087,11 @@ PrefabInstance:
     - target: {fileID: 2958888507202412854, guid: a32b93439521f5143acfb751ef55b83e,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6515796966750869878, guid: a32b93439521f5143acfb751ef55b83e,
+        type: 3}
+      propertyPath: clickTotal
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
@@ -2355,7 +2355,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1642029465}
-        m_MethodName: LoadBulletHellScreen
+        m_MethodName: LoadMiniGameScreen
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
