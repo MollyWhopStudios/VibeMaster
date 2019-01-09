@@ -45,7 +45,7 @@ public class SceneLoader : MonoBehaviour
 
     public void LoadTowerDefenseScreen()
     {
-        SceneManager.LoadScene("Tower Defense");
+        SceneManager.LoadScene("Level 1");
     }
 
     public void LoadBulletHellScreen()
