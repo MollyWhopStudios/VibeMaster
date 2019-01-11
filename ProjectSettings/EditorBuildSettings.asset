@@ -5,9 +5,6 @@ EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Scenes:
-  - enabled: 0
-    path: 
-    guid: 00000000000000000000000000000000
   - enabled: 1
     path: Assets/Scenes/Main Menu.unity
     guid: 772d8bb742258e34c986758e6d079a62
@@ -24,6 +21,33 @@ EditorBuildSettings:
     path: Assets/Scenes/Stats.unity
     guid: 0b1abdf5cc8ac9f488ed02429508f4fb
   - enabled: 1
+    path: Assets/Scenes/Mini Games.unity
+    guid: b42d3018aecac2e4f970b4e024cf7cc0
+  - enabled: 1
     path: Assets/Scenes/Bullet Hell.unity
     guid: d504880f9163f81478b3e5f4a80ab728
+  - enabled: 1
+    path: Assets/Mini Games/Tower Defense/Scenes/Blank Level.unity
+    guid: 3a1b2dcd8cb531b4bb2712d4c65e7ad8
+  - enabled: 1
+    path: Assets/Mini Games/Tower Defense/Scenes/Level 1.unity
+    guid: a59f47f7ce9965f4b91d87f644b41e69
+  - enabled: 1
+    path: Assets/Mini Games/Tower Defense/Scenes/Level 2.unity
+    guid: b1720fb6b92a8574bb910477055543a2
+  - enabled: 1
+    path: Assets/Mini Games/Tower Defense/Scenes/Level 3.unity
+    guid: d0c04ad9152cdb5498e27392e64478e1
+  - enabled: 1
+    path: Assets/Mini Games/Tower Defense/Scenes/Lose Screen.unity
+    guid: 84ac7803562e6134aae30dab7e0131f9
+  - enabled: 1
+    path: Assets/Mini Games/Tower Defense/Scenes/Options Screen.unity
+    guid: 437275e0ede2e534e99ce9b02b217d2a
+  - enabled: 1
+    path: Assets/Mini Games/Tower Defense/Scenes/Splash Screen.unity
+    guid: 3b8c766ea0bf4864aae99448b1cbac74
+  - enabled: 1
+    path: Assets/Mini Games/Tower Defense/Scenes/Start Screen.unity
+    guid: 80b5d51ef7ba0104ba078c9cace0c1f9
   m_configObjects: {}
