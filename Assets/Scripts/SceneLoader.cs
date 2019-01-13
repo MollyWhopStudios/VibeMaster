@@ -7,6 +7,40 @@ public class SceneLoader : MonoBehaviour
 {
     [SerializeField] float gameOverDelayInSeconds = 3f;
 
+    public GameObject shopPanel;
+    public GameObject statsPanel;
+
+    Animation slide;
+
+    public void OpenShopAnimation()
+    {
+        slide = shopPanel.GetComponent<Animation>();
+
+        slide.Play("shopPanelSlide");
+    }
+
+    public void CloseShopAnimation()
+    {
+        slide = shopPanel.GetComponent<Animation>();
+
+        slide.Play("shopPanelSlideOff");
+    }
+
+    public void OpenStatsAnimation()
+    {
+        slide = statsPanel.GetComponent<Animation>();
+
+        slide.Play("statsPanelSlide");
+    }
+
+
+    public void CloseStatsAnimation()
+    {
+        slide = statsPanel.GetComponent<Animation>();
+
+        slide.Play("statsPanelSlideOff");
+    }
+
     public void LoadNextScene()
     {
         int currentSceneIndex = SceneManager.GetActiveScene().buildIndex;
@@ -68,4 +102,6 @@ public class SceneLoader : MonoBehaviour
     {
         Application.Quit();
     }
+
+
 }
