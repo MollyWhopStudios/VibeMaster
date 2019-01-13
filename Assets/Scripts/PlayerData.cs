@@ -1,7 +1,11 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System.Runtime.Serialization.Formatters.Binary;
+using System.IO;
+using System.Array;
 
+[Serializable]
 public class PlayerData : MonoBehaviour
 {
     // Player Data
@@ -104,4 +108,45 @@ public class PlayerData : MonoBehaviour
         }
     }
 
+    public void Save()
+    {
+      BinaryFormatter bf = new BinaryFormatter();
+      FileStream file = File.Create(Application.persistentDataPath + "/playerInfo.dat", FileMode.Open);
+
+      PlayerData data = new PlayerData();
+
+      data.click = click;
+      data.clickTotal = clickTotal;
+      data.clickMultiplier = clickMultiplier;
+      data.critChance = critChance;
+      data.critMultiplier = critMultiplier;
+      data.passiveGain = passiveGain;
+
+      Array.Copy(shopUpgradeLevel, 0, data.shopUpgradeLevel , 0, shopUpgradeLevel.Length);
+      Array.Copy(upgradeScaleCounter, 0, data.upgradeScaleCounter , 0, upgradeScaleCounter.Length);
+
+      bf.Serialize(file, data);
+      file.Close();
+    }
+
+    public void Load()
+    {
+        if(File.Exists(Application.persistentDataPath + "/playerInfo.dat"))
+        {
+          BinaryFormatter bf = new BinaryFormatter();
+          FileStream file = File.Open(Application.persistentDataPath + "/playerInfo.dat");
+          PlayerData data = (PlayerData)bf.Deserialize(file);
+          file.Close();
+
+          click = data.click;
+          clickTotal = data.clickTotal;
+          clickMultiplier = data.clickMultiplier;
+          critChance = data.critChance;
+          critMultiplier = data.critMultiplier;
+          passiveGain = data.passiveGain;
+
+          Array.Copy(data.shopUpgradeLevel, 0, shopUpgradeLevel , 0, shopUpgradeLevel.Length);
+          Array.Copy(data.upgradeScaleCounter, 0, upgradeScaleCounter , 0, upgradeScaleCounter.Length);
+        }
+    }
 }
