@@ -396,6 +396,26 @@ PrefabInstance:
       propertyPath: m_fontSizeBase
       value: 95
       objectReference: {fileID: 0}
+    - target: {fileID: 7429654221054324876, guid: f718afaeaf1305e43bb342b80ee641a7,
+        type: 3}
+      propertyPath: m_text
+      value: START
+      objectReference: {fileID: 0}
+    - target: {fileID: 7429654221054324876, guid: f718afaeaf1305e43bb342b80ee641a7,
+        type: 3}
+      propertyPath: m_textInfo.characterCount
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 7429654221054324876, guid: f718afaeaf1305e43bb342b80ee641a7,
+        type: 3}
+      propertyPath: m_textInfo.wordCount
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7429654221054324876, guid: f718afaeaf1305e43bb342b80ee641a7,
+        type: 3}
+      propertyPath: m_textInfo.pageCount
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7429654221416781073, guid: f718afaeaf1305e43bb342b80ee641a7,
         type: 3}
       propertyPath: m_Color.a
@@ -1181,6 +1201,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gameOverDelayInSeconds: 3
+  shopPanel: {fileID: 0}
+  statsPanel: {fileID: 0}
 --- !u!4 &1798818299
 Transform:
   m_ObjectHideFlags: 0
