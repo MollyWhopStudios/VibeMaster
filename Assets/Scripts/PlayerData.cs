@@ -9,8 +9,8 @@ using System;
 public class PlayerData : MonoBehaviour
 {
     // Player Data
-    [SerializeField] public int click = 0;
-    [SerializeField] public int clickTotal = 0;
+    [SerializeField] public float click = 0;
+    [SerializeField] public float clickTotal = 0;
     [SerializeField] public int clickMultiplier = 1;
     [SerializeField] public float critChance = 1f;
     [SerializeField] public int critMultiplier = 3;

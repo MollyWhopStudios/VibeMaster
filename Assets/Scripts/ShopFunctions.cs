@@ -29,7 +29,7 @@ public class ShopFunctions : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        scoreText.text = "Vibes: " + playerData.click;
+        scoreText.text = "Vibe: " + playerData.click;
 
         clickTierText.text = "Tier: " + playerData.GetUpgradeTier((int)PlayerData.Upgrades.click) + "\n(+" + 
             playerData.clickUpgradeValue[(int)PlayerData.Upgrades.click] + " Vibes)";
