@@ -38,12 +38,15 @@ public class Game : MonoBehaviour
     public float enemyHealthScaling = 1.5f; // used to reset enemy health values for higher levels
     public float enemyHealth        = 0;    // enemy health values
 
+    public string currentEnemyName;         // string variable to display names of current enemy
+
     public TextMeshProUGUI enemyHealthDisplay; // to display enemy health on main screen
     public TextMeshProUGUI levelDisplay;       // to display current level
 
     void Start()
     {
         enemyHealth = level * enemyHealthScaling * baseHealth;
+        currentEnemyName = "Solidarity Statue"; // first enemy is the statue
 
         playerData = FindObjectOfType<PlayerData>();
         //extract image from game object to change it later
@@ -57,7 +60,7 @@ public class Game : MonoBehaviour
     {
         score.text = "Vibes: " + playerData.click;
         enemyHealthDisplay.text = "Enemy Health: " + enemyHealth;
-        levelDisplay.text = "Level: " + level;
+        levelDisplay.text = "Level: " + level + " - " + currentEnemyName;
     }
 
     public void ButtonClick()
@@ -86,12 +89,15 @@ public class Game : MonoBehaviour
                 {
                     case 1:
                         tempImage.sprite = defaultStatue;
+                        currentEnemyName = "Solidarity Statue";
                         break;
                     case 2:
                         tempImage.sprite = enemy2;
+                        currentEnemyName = "Didactic Dolphin Squad One";
                         break;
                     case 3:
                         tempImage.sprite = enemy3;
+                        currentEnemyName = "Didactic Dolphin Squad Two";
                         break;
                 }
                 playerData.clickTotal += playerData.click;
@@ -140,12 +146,15 @@ public class Game : MonoBehaviour
                 {
                     case 1:
                         tempImage.sprite = defaultStatue;
+                        currentEnemyName = "Solidarity Statue";
                         break;
                     case 2:
                         tempImage.sprite = enemy2;
+                        currentEnemyName = "Didactic Dolphin Squad One";
                         break;
                     case 3:
                         tempImage.sprite = enemy3;
+                        currentEnemyName = "Didactic Dolphin Squad Two";
                         break;
                 }
 
