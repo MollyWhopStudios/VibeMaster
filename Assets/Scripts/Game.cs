@@ -6,7 +6,12 @@ using TMPro;
 
 public class Game : MonoBehaviour
 {
-    // blacks
+    // Player Controller -- Get data when scene loaded
+    PlayerManager player;
+    // Wrappers 
+    public void ResetData() { player.ResetData(); }
+    public void Load() { player.Load(); }
+    public void Save() { player.Save(); }
     // -------------------------------------------------------
     public GameObject critText;   // animation to play when crit
     public GameObject clickImage; // main button to acquire clicks
@@ -24,7 +29,7 @@ public class Game : MonoBehaviour
 
     // cached data
     [Header("Cached Data")]
-    public PlayerData playerData;
+    public PlayerManager data;
     private Image tempImage;
     private int critAttack;
     public TextMeshProUGUI score;
@@ -45,10 +50,13 @@ public class Game : MonoBehaviour
 
     void Start()
     {
+        //
+        player = FindObjectOfType<PlayerManager>();
+        //
         enemyHealth = level * enemyHealthScaling * baseHealth;
         currentEnemyName = "Solidarity Statue"; // first enemy is the statue
 
-        playerData = FindObjectOfType<PlayerData>();
+        data = FindObjectOfType<PlayerManager>();
         //extract image from game object to change it later
         tempImage = clickImage.GetComponent<Image>();
         score.GetComponent<TextMeshProUGUI>();
@@ -58,7 +66,7 @@ public class Game : MonoBehaviour
 
     void Update()
     {
-        score.text = "Vibes: " + playerData.click;
+        score.text = "Vibes: " + data.player.click;
         enemyHealthDisplay.text = "Enemy Health: " + enemyHealth;
         levelDisplay.text = "Level: " + level + " - " + currentEnemyName;
     }
@@ -72,15 +80,15 @@ public class Game : MonoBehaviour
     {
         critAttack = Random.Range(1, 101);
 
-        if (playerData.critChance >= critAttack)
+        if (data.player.critChance >= critAttack)
         {
             //playerData.click = playerData.click + (playerData.clickMultiplier * playerData.critMultiplier);
 
-            enemyHealth -= (playerData.clickMultiplier * playerData.critMultiplier);
+            enemyHealth -= (data.player.clickMultiplier * data.player.critMultiplier);
 
             if (enemyHealth <= 0)
             {
-                playerData.click += (level * baseReward * rewardScaling);
+                data.player.click += (level * baseReward * rewardScaling);
                 level++;
                 enemyHealth = level * enemyHealthScaling * baseHealth;
 
@@ -100,7 +108,7 @@ public class Game : MonoBehaviour
                         currentEnemyName = "Didactic Dolphin Squad Two";
                         break;
                 }
-                playerData.clickTotal += playerData.click;
+                data.player.clickTotal += data.player.click;
             }
 
             critText.GetComponent<Text>().text = "クリティカル";
@@ -133,11 +141,11 @@ public class Game : MonoBehaviour
         {
             //playerData.click = playerData.click + playerData.clickMultiplier; //get 1 vibe for every click
 
-            enemyHealth -= playerData.clickMultiplier;
+            enemyHealth -= data.player.clickMultiplier;
 
             if(enemyHealth <= 0)
             {
-                playerData.click += (level * baseReward * rewardScaling);
+                data.player.click += (level * baseReward * rewardScaling);
                 level++;
                 enemyHealth = level * enemyHealthScaling * baseHealth;
 
@@ -158,7 +166,7 @@ public class Game : MonoBehaviour
                         break;
                 }
 
-                playerData.clickTotal += playerData.click;
+                data.player.clickTotal += data.player.click;
             }
 
             //playerData.clickTotal = playerData.clickTotal + playerData.clickMultiplier;

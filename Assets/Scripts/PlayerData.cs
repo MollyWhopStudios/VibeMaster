@@ -4,37 +4,65 @@ using UnityEngine;
 using System.Runtime.Serialization.Formatters.Binary;
 using System.IO;
 using System;
+using System.Runtime.Serialization;
+using System.Xml;
+using System.Xml.Linq;
+using System.Text;
 
-[System.Serializable]
-public class PlayerData : MonoBehaviour
+
+[DataContract]
+public class PlayerData
 {
     // Player Data
-    [SerializeField] public float click = 0;
-    [SerializeField] public float clickTotal = 0;
-    [SerializeField] public int clickMultiplier = 1;
-    [SerializeField] public float critChance = 1f;
-    [SerializeField] public int critMultiplier = 3;
-    [SerializeField] public int passiveGain = 0;
+    [DataMember]
+    public float click;
+    [DataMember]
+    public float clickTotal;
+    [DataMember]
+    public int clickMultiplier;
+    [DataMember]
+    public float critChance;
+    [DataMember]
+    public int critMultiplier;
+    [DataMember]
+    public int passiveGain;
+
+    public PlayerData()
+    {
+      click = 0;
+      clickTotal = 0;
+      clickMultiplier = 1;
+      critChance = 1f;
+      critMultiplier = 3;
+      passiveGain = 0;
+    }
 
     // Shop Values
     public enum Upgrades { click, crit, passive };
-    [Header("Shop Upgrades")]
+
     private int shopUpgradeMaxLevel = 4; // size of value array
-    [SerializeField] public int scaleLevel = 5; // num of cycles before scale to new level
+    public int scaleLevel           = 5; // num of cycles before scale to new level
     private int[] shopUpgradeLevel = { 0, 0, 0 };
     private int[] upgradeScaleCounter = { 0, 0, 0 };
 
+    public void ResetData()
+    {
+        click = 0;
+        clickTotal = 0;
+        clickMultiplier = 1;
+        critChance = 1f;
+        critMultiplier = 3;
+        passiveGain = 0;
+    }
+
     public int GetUpgradeTier(int upgrade) { return shopUpgradeLevel[upgrade]; }
 
-    [Header("Click Upgrades")]
-    [SerializeField] public int[] clickUpgradeCost = { 10, 1000, 1000, 10000, 100000 };
-    [SerializeField] public int[] clickUpgradeValue = { 1, 10, 100, 1000, 10000 };
-    [Header("Crit Upgrades")]
-    [SerializeField] public int[] critUpgradeCost = { 10, 1000, 1000, 10000, 100000 };
-    [SerializeField] public float[] critUpgradeValue = { 0.5f, 1.0f, 5.0f, 7.5f, 10.0f };
-    [Header("Passive Upgrades")]
-    [SerializeField] public int[] passiveUpgradeCost = { 1000, 10000, 100000, 1000000, 100000000 };
-    [SerializeField] public int[] passiveUpgradeValue = { 3, 30, 100, 500, 10000 };
+    public int[] clickUpgradeCost    = { 10, 1000, 1000, 10000, 100000 };
+    public int[] clickUpgradeValue   = { 1, 10, 100, 1000, 10000 };
+    public int[] critUpgradeCost     = { 10, 1000, 1000, 10000, 100000 };
+    public float[] critUpgradeValue  = { 0.5f, 1.0f, 5.0f, 7.5f, 10.0f };
+    public int[] passiveUpgradeCost  = { 1000, 10000, 100000, 1000000, 100000000 };
+    public int[] passiveUpgradeValue = { 3, 30, 100, 500, 10000 };
 
     public int GetUpgradeCost(int upgrade)
     {
@@ -45,19 +73,6 @@ public class PlayerData : MonoBehaviour
             case 2: return passiveUpgradeCost[shopUpgradeLevel[(int)Upgrades.passive]];
             default: return -1;
         }
-    }
-
-    // Singleton ------------------------------------ DONT TOUCH
-    private void Awake() { SetUpSingleton(); }
-    private void SetUpSingleton() {
-        if (FindObjectsOfType(GetType()).Length > 1) { Destroy(gameObject); }
-        else { DontDestroyOnLoad(gameObject); }
-    } // End Singleton ------------------------------ DONT TOUCH
-
-    private void Update()
-    {
-        // passive upgrades
-        // TODO:
     }
 
     private void UseUpgrade(int upgrade)
@@ -108,45 +123,61 @@ public class PlayerData : MonoBehaviour
         }
     }
 
-    //public void Save()
-    //{
-    //  BinaryFormatter bf = new BinaryFormatter();
-    //  FileStream file = File.Create(Application.persistentDataPath + "/playerInfo.dat", FileMode.Open);
+    public void Save()
+    {
 
-    //  PlayerData data = new PlayerData();
+        // Stream the file with a File Stream. (Note that File.Create() 'Creates' or 'Overwrites' a file.)
+        FileStream file = File.Create(Application.persistentDataPath + "/PlayerData.dat");
+        // Create a new Player_Data.
+        PlayerData data = new PlayerData();
+        //Save the data.
+        data.click = click;
+        data.clickTotal = clickTotal;
+        data.clickMultiplier = clickMultiplier;
+        data.critChance = critChance;
+        data.critMultiplier = critMultiplier;
+        data.passiveGain = passiveGain;
 
-    //  data.click = click;
-    //  data.clickTotal = clickTotal;
-    //  data.clickMultiplier = clickMultiplier;
-    //  data.critChance = critChance;
-    //  data.critMultiplier = critMultiplier;
-    //  data.passiveGain = passiveGain;
+        //Serialize to xml
+        DataContractSerializer bf = new DataContractSerializer(data.GetType());
+        MemoryStream streamer = new MemoryStream();
 
-    //  Array.Copy(shopUpgradeLevel, 0, data.shopUpgradeLevel , 0, shopUpgradeLevel.Length);
-    //  Array.Copy(upgradeScaleCounter, 0, data.upgradeScaleCounter , 0, upgradeScaleCounter.Length);
+        //Serialize the file
+        bf.WriteObject(streamer, data);
+        streamer.Seek(0, SeekOrigin.Begin);
 
-    //  bf.Serialize(file, data);
-    //  file.Close();
-    //}
+        //Save to disk
+        file.Write(streamer.GetBuffer(), 0, streamer.GetBuffer().Length);
 
-    //public void Load()
-    //{
-    //    if(File.Exists(Application.persistentDataPath + "/playerInfo.dat"))
-    //    {
-    //      BinaryFormatter bf = new BinaryFormatter();
-    //      FileStream file = File.Open(Application.persistentDataPath + "/playerInfo.dat");
-    //      PlayerData data = (PlayerData)bf.Deserialize(file);
-    //      file.Close();
+        // Close the file to prevent any corruptions
+        file.Close();
 
-    //      click = data.click;
-    //      clickTotal = data.clickTotal;
-    //      clickMultiplier = data.clickMultiplier;
-    //      critChance = data.critChance;
-    //      critMultiplier = data.critMultiplier;
-    //      passiveGain = data.passiveGain;
+        string result = XElement.Parse(Encoding.ASCII.GetString(streamer.GetBuffer()).Replace("\0", "")).ToString();
+        Debug.Log("Serialized Result: " + result);
+    }
 
-    //      Array.Copy(data.shopUpgradeLevel, 0, shopUpgradeLevel , 0, shopUpgradeLevel.Length);
-    //      Array.Copy(data.upgradeScaleCounter, 0, upgradeScaleCounter , 0, upgradeScaleCounter.Length);
-    //    }
-    //}
+    public void Load()
+    {
+        string fileName = Application.persistentDataPath + "/playerData.dat";
+
+        Debug.Log("Deserializing an instance of the object.");
+
+        FileStream fs = new FileStream(fileName, FileMode.Open);
+        XmlDictionaryReader reader = XmlDictionaryReader.CreateTextReader(fs, new XmlDictionaryReaderQuotas());
+        DataContractSerializer ser = new DataContractSerializer(typeof(PlayerData));
+
+        // Deserialize the data and read it from the instance.
+        PlayerData newData = (PlayerData)ser.ReadObject(reader, true);
+
+        reader.Close();
+        fs.Close();
+
+        // Load
+        click = newData.click;
+        clickTotal = newData.clickTotal;
+        clickMultiplier = newData.clickMultiplier;
+        critChance = newData.critChance;
+        critMultiplier = newData.critMultiplier;
+        passiveGain = newData.passiveGain;
+    }
 }
