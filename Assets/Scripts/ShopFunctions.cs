@@ -5,7 +5,7 @@ using TMPro;
 
 public class ShopFunctions : MonoBehaviour
 {
-    [SerializeField] public PlayerData playerData;
+    [SerializeField] public PlayerManager data;
     public TextMeshProUGUI clickTierText, critTierText, passiveTierText;
     public TextMeshProUGUI clickCostText, critCostText, passiveCostText;
     public TextMeshProUGUI scoreText;
@@ -13,7 +13,7 @@ public class ShopFunctions : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        playerData = FindObjectOfType<PlayerData>();
+        data = FindObjectOfType<PlayerManager>();
 
         scoreText.GetComponent<TextMeshProUGUI>();
 
@@ -29,33 +29,33 @@ public class ShopFunctions : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        scoreText.text = "Vibe: " + playerData.click;
+        scoreText.text = "Vibe: " + data.player.click;
 
-        clickTierText.text = "Tier: " + playerData.GetUpgradeTier((int)PlayerData.Upgrades.click) + "\n(+" + 
-            playerData.clickUpgradeValue[(int)PlayerData.Upgrades.click] + " Vibes)";
+        clickTierText.text = "Tier: " + data.player.GetUpgradeTier((int)PlayerData.Upgrades.click) + "\n(+" +
+            data.player.clickUpgradeValue[(int)PlayerData.Upgrades.click] + " Vibes)";
 
-        critTierText.text = "Tier: " + playerData.GetUpgradeTier((int)PlayerData.Upgrades.crit) + "\n(+%" + 
-            playerData.critUpgradeValue[(int)PlayerData.Upgrades.crit] + " Crit)";
+        critTierText.text = "Tier: " + data.player.GetUpgradeTier((int)PlayerData.Upgrades.crit) + "\n(+%" +
+            data.player.critUpgradeValue[(int)PlayerData.Upgrades.crit] + " Crit)";
 
-        passiveTierText.text = "Tier: " + playerData.GetUpgradeTier((int)PlayerData.Upgrades.passive);
+        passiveTierText.text = "Tier: " + data.player.GetUpgradeTier((int)PlayerData.Upgrades.passive);
 
-        clickCostText.text = "Cost: " + playerData.GetUpgradeCost((int)PlayerData.Upgrades.click);
-        critCostText.text = "Cost: " + playerData.GetUpgradeCost((int)PlayerData.Upgrades.crit);
-        passiveCostText.text = "Cost: " + playerData.GetUpgradeCost((int)PlayerData.Upgrades.passive);
+        clickCostText.text = "Cost: " + data.player.GetUpgradeCost((int)PlayerData.Upgrades.click);
+        critCostText.text = "Cost: " + data.player.GetUpgradeCost((int)PlayerData.Upgrades.crit);
+        passiveCostText.text = "Cost: " + data.player.GetUpgradeCost((int)PlayerData.Upgrades.passive);
     }
 
     public void ClickUpgrade()
     {
-        playerData.ClickUpgrade();
+        data.player.ClickUpgrade();
     }
 
     public void CritUpgrade()
     {
-        playerData.CritUpgrade();
+        data.player.CritUpgrade();
     }
 
     public void PassiveUpgrade()
     {
-        playerData.PassiveUpgrade();
+        data.player.PassiveUpgrade();
     }
 }
