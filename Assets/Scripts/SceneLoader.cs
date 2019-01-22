@@ -100,6 +100,10 @@ public class SceneLoader : MonoBehaviour
 
     public void QuitGame()
     {
+        // Auto Save on Quit
+        PlayerManager data = FindObjectOfType<PlayerManager>(); ;
+        data.Save();
+        //
         Application.Quit();
     }
 

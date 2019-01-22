@@ -124,6 +124,51 @@ PrefabInstance:
       propertyPath: m_Name
       value: Shop Functions
       objectReference: {fileID: 0}
+    - target: {fileID: 9187448797947946489, guid: ff29f3a5eb508be46b22eeef66249163,
+        type: 3}
+      propertyPath: playerData
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 9187448797947946489, guid: ff29f3a5eb508be46b22eeef66249163,
+        type: 3}
+      propertyPath: clickTierText
+      value: 
+      objectReference: {fileID: 3850786194512334091}
+    - target: {fileID: 9187448797947946489, guid: ff29f3a5eb508be46b22eeef66249163,
+        type: 3}
+      propertyPath: critTierText
+      value: 
+      objectReference: {fileID: 5961431393046680692}
+    - target: {fileID: 9187448797947946489, guid: ff29f3a5eb508be46b22eeef66249163,
+        type: 3}
+      propertyPath: passiveTierText
+      value: 
+      objectReference: {fileID: 5961431391924573203}
+    - target: {fileID: 9187448797947946489, guid: ff29f3a5eb508be46b22eeef66249163,
+        type: 3}
+      propertyPath: clickCostText
+      value: 
+      objectReference: {fileID: 5961431392253464125}
+    - target: {fileID: 9187448797947946489, guid: ff29f3a5eb508be46b22eeef66249163,
+        type: 3}
+      propertyPath: critCostText
+      value: 
+      objectReference: {fileID: 5961431393716547915}
+    - target: {fileID: 9187448797947946489, guid: ff29f3a5eb508be46b22eeef66249163,
+        type: 3}
+      propertyPath: passiveCostText
+      value: 
+      objectReference: {fileID: 5961431393157228780}
+    - target: {fileID: 9187448797947946489, guid: ff29f3a5eb508be46b22eeef66249163,
+        type: 3}
+      propertyPath: scoreText
+      value: 
+      objectReference: {fileID: 9087601977526607102}
+    - target: {fileID: 9187448797947946489, guid: ff29f3a5eb508be46b22eeef66249163,
+        type: 3}
+      propertyPath: data
+      value: 
+      objectReference: {fileID: 1525886999}
     - target: {fileID: 9187448797947946488, guid: ff29f3a5eb508be46b22eeef66249163,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -179,51 +224,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 9187448797947946489, guid: ff29f3a5eb508be46b22eeef66249163,
-        type: 3}
-      propertyPath: playerData
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 9187448797947946489, guid: ff29f3a5eb508be46b22eeef66249163,
-        type: 3}
-      propertyPath: clickTierText
-      value: 
-      objectReference: {fileID: 3850786194512334091}
-    - target: {fileID: 9187448797947946489, guid: ff29f3a5eb508be46b22eeef66249163,
-        type: 3}
-      propertyPath: critTierText
-      value: 
-      objectReference: {fileID: 5961431393046680692}
-    - target: {fileID: 9187448797947946489, guid: ff29f3a5eb508be46b22eeef66249163,
-        type: 3}
-      propertyPath: passiveTierText
-      value: 
-      objectReference: {fileID: 5961431391924573203}
-    - target: {fileID: 9187448797947946489, guid: ff29f3a5eb508be46b22eeef66249163,
-        type: 3}
-      propertyPath: clickCostText
-      value: 
-      objectReference: {fileID: 5961431392253464125}
-    - target: {fileID: 9187448797947946489, guid: ff29f3a5eb508be46b22eeef66249163,
-        type: 3}
-      propertyPath: critCostText
-      value: 
-      objectReference: {fileID: 5961431393716547915}
-    - target: {fileID: 9187448797947946489, guid: ff29f3a5eb508be46b22eeef66249163,
-        type: 3}
-      propertyPath: passiveCostText
-      value: 
-      objectReference: {fileID: 5961431393157228780}
-    - target: {fileID: 9187448797947946489, guid: ff29f3a5eb508be46b22eeef66249163,
-        type: 3}
-      propertyPath: scoreText
-      value: 
-      objectReference: {fileID: 9087601977526607102}
-    - target: {fileID: 9187448797947946489, guid: ff29f3a5eb508be46b22eeef66249163,
-        type: 3}
-      propertyPath: data
-      value: 
-      objectReference: {fileID: 1525886999}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ff29f3a5eb508be46b22eeef66249163, type: 3}
 --- !u!224 &159128983 stripped
@@ -4022,7 +4022,7 @@ PrefabInstance:
         type: 3}
       propertyPath: data
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 1525886999}
     - target: {fileID: 2422942621515881982, guid: 14944efc4422f164bbada3028fc30ef2,
         type: 3}
       propertyPath: dolphinEnemy2
