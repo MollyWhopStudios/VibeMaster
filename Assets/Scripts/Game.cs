@@ -6,18 +6,11 @@ using TMPro;
 
 public class Game : MonoBehaviour
 {
-    // Player Controller -- Get data when scene loaded
-    PlayerManager player;
-    // Wrappers 
-    public void ResetData() { player.ResetData(); }
-    public void Load() { player.Load(); }
-    public void Save() { player.Save(); }
     // -------------------------------------------------------
     public GameObject critText;   // animation to play when crit
     public GameObject clickImage; // main button to acquire clicks
     /* Images */
     [Header("Image Data")]
-
     [HideInInspector] public Sprite currentEnemy; // picture to reset from crit image
     [HideInInspector] public Sprite currentCrit1; // temp crit images
     [HideInInspector] public Sprite currentCrit2;
@@ -34,46 +27,37 @@ public class Game : MonoBehaviour
     public Sprite kingPalmEnemy;
 
     // -------------------------------------------------------
-
     // cached data
     [Header("Cached Data")]
+    // Player Controller -- Get data when scene loaded
     public PlayerManager data;
+    // Wrappers 
+    public void ResetData() { data.ResetData(); }
+    public void Load() { data.Load(); }
+    public void Save() { data.Save(); }
+    //
     private Image tempImage;
     private int critAttack;
     public TextMeshProUGUI score;
     Animation death;
-
-    // enemy data mechanics --------------------------------------------------------------------------------
-    [Header("Enemy Data")]
-    public int level         = 1;           // used to track how many enemies killed; how to scale enemy difficulty (health)
-    public int baseReward    = 20;          // starting base point reward for killing enemy
-    public int baseHealth    = 10;          // starting point for enemy health initialization
-    public float rewardScaling      = 1.1f; // scaling vibes earned after killing enemy
-    public float enemyHealthScaling = 1.5f; // used to reset enemy health values for higher levels
-    public float enemyHealth        = 0;    // enemy health values
-    public float enemyMaxHealth     = 0;    // to use for calculating enemy health bar
-
+    // -------------------------------------------------------
     public string currentEnemyName;         // string variable to display names of current enemy
-
     public Image healthbar;                 // main healthbar
-
     public TextMeshProUGUI enemyHealthDisplay; // to display enemy health on main screen
     public TextMeshProUGUI levelDisplay;       // to display current level
 
     void Start()
     {
-        //
-        player = FindObjectOfType<PlayerManager>();
-        //
-        enemyHealth = level * enemyHealthScaling * baseHealth;
-        enemyMaxHealth = enemyHealth;
+        // ---
+        data = FindObjectOfType<PlayerManager>();
+        // ---
+
         currentEnemyName = "Solidarity Statue"; // first enemy is the statue
         currentEnemy = defaultStatue;
         currentCrit1 = critStatue1;
         currentCrit2 = critStatue2;
         currentCrit3 = critStatue3;
-
-        data = FindObjectOfType<PlayerManager>();
+        
         //extract image from game object to change it later
         tempImage = clickImage.GetComponent<Image>();
         score.GetComponent<TextMeshProUGUI>();
@@ -85,15 +69,20 @@ public class Game : MonoBehaviour
 
     void Update()
     {
+        UpdateDisplay();
+    }
+
+    private void UpdateDisplay()
+    {
         score.text = "Vibes: " + data.player.click;
-        enemyHealthDisplay.text = "HP: " + enemyHealth;
-        levelDisplay.text = "Level: " + level + " - " + currentEnemyName;
-        healthbar.fillAmount = enemyHealth / enemyMaxHealth;
+        enemyHealthDisplay.text = "HP: " + data.enemy.GetHealth();
+        levelDisplay.text = "Level: " + data.enemy.GetLevel() + " - " + currentEnemyName;
+        healthbar.fillAmount = data.enemy.GetHealth() / data.enemy.GetMaxHealth();
     }
 
     public void ButtonClick()
     {
-        if(enemyHealth > 0)
+        if(data.enemy.GetHealth() > 0)
             Attack();
     }
 
@@ -103,13 +92,14 @@ public class Game : MonoBehaviour
 
         if (data.player.critChance >= critAttack)
         {
+            float tempHealth = data.enemy.GetHealth();
             //playerData.click = playerData.click + (playerData.clickMultiplier * playerData.critMultiplier);
-            enemyHealth -= (data.player.clickMultiplier * data.player.critMultiplier);
+            tempHealth -= (data.player.clickMultiplier * data.player.critMultiplier);
 
-            if (enemyHealth < 0) //so that no negatives show up
-                enemyHealth = 0;
+            if (tempHealth < 0) //so that no negatives show up
+                tempHealth = 0;
 
-            if (enemyHealth == 0) // change picture + add vibes when enemy dies
+            if (tempHealth == 0) // change picture + add vibes when enemy dies
             {
                 death.Play("deathAnimation");
                 Invoke("RandomizeEnemyImage", 0.5f); // wait 30 frames before running function
@@ -133,20 +123,21 @@ public class Game : MonoBehaviour
                     break;
             }
             */
-
+            data.enemy.SetHealth(tempHealth);
         }
         else
         {
+            float tempHealth = data.enemy.GetHealth();
             //playerData.click = playerData.click + playerData.clickMultiplier; //get 1 vibe for every click
 
-            enemyHealth -= data.player.clickMultiplier;
+            tempHealth -= data.player.clickMultiplier;
 
-            if (enemyHealth < 0) //so that no negatives show up
-                enemyHealth = 0;
+            if (tempHealth < 0) //so that no negatives show up
+                tempHealth = 0;
 
             tempImage.sprite = currentEnemy; // to reset if crit image is the current
 
-            if (enemyHealth == 0) // change picture + add vibes when enemy dies
+            if (tempHealth == 0) // change picture + add vibes when enemy dies
             {
                 death.Play("deathAnimation");
                 Invoke("RandomizeEnemyImage", 0.5f); // wait 30 frames before running function
@@ -154,16 +145,16 @@ public class Game : MonoBehaviour
 
             //playerData.clickTotal = playerData.clickTotal + playerData.clickMultiplier;
             //tempImage.sprite = defaultStatue; //change statue back to non-glitched
+
+            data.enemy.SetHealth(tempHealth);
         }
     }
 
     private void RandomizeEnemyImage()
     {
-
-        data.player.click += (level * baseReward * rewardScaling);
-        level++;
-        enemyHealth = level * enemyHealthScaling * baseHealth;
-        enemyMaxHealth = enemyHealth;
+        data.player.click += (data.enemy.GetLevel() * data.enemy.GetBaseReward() * data.enemy.GetRewardScaling());
+        data.LevelUp(); // increments both player and enemy stored data (level++)
+        data.enemy.CalculateEnemyHealth();
 
         data.player.clickTotal += data.player.click;
 
