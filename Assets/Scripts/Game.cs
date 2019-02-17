@@ -28,10 +28,38 @@ public class Game : MonoBehaviour
     public Sprite critStatue2;
     public Sprite critStatue3;
 
+    public Sprite dolphinEnemy1;
+    public Sprite critDolphin1red;
+    public Sprite critDolphin2red;
+    public Sprite critDolphin3red;
+
     public Sprite dolphinEnemy2;
+    public Sprite critDolphin1green;
+    public Sprite critDolphin2green;
+    public Sprite critDolphin3green;
+
     public Sprite dolphinEnemy3;
+    public Sprite critDolphin1blue;
+    public Sprite critDolphin2blue;
+    public Sprite critDolphin3blue;
+
+    public Sprite kingPalmEnemy1;
+    public Sprite critPalm1Red;
+    public Sprite critPalm2Red;
+    public Sprite critPalm3Red;
+
+    public Sprite kingPalmEnemy2;
+    public Sprite critPalm1Green;
+    public Sprite critPalm2Green;
+    public Sprite critPalm3Green;
+
+    public Sprite kingPalmEnemy3;
+    public Sprite critPalm1Blue;
+    public Sprite critPalm2Blue;
+    public Sprite critPalm3Blue;
+
     public Sprite hotboydogEnemy;
-    public Sprite kingPalmEnemy;
+    
 
     // -------------------------------------------------------
 
@@ -39,9 +67,9 @@ public class Game : MonoBehaviour
     [Header("Cached Data")]
     public PlayerManager data;
     private Image tempImage;
-    private int critAttack;
+    private int randomizer;
     public TextMeshProUGUI score;
-    Animation death;
+    Animation clickImageAnimation;
 
     // enemy data mechanics --------------------------------------------------------------------------------
     [Header("Enemy Data")]
@@ -80,11 +108,27 @@ public class Game : MonoBehaviour
         enemyHealthDisplay.GetComponent<TextMeshProUGUI>();
         levelDisplay.GetComponent<TextMeshProUGUI>();
 
-        death = clickImage.GetComponent<Animation>();
+        clickImageAnimation = clickImage.GetComponent<Animation>();
     }
 
     void Update()
     {
+        // ---------- mechanic to randomize idle enemy animation -------------
+        if(!clickImageAnimation.isPlaying)
+        {
+            randomizer = Random.Range(1, 3);
+            switch (randomizer)
+            {
+                case 1:
+                    clickImageAnimation.PlayQueued("idleEnemyWiggle");
+                    break;
+                case 2:
+                    clickImageAnimation.Play("idleEnemyPulse");
+                    break;
+            }
+        }
+        //---------------------------------------------------------------------
+            
         score.text = "Vibes: " + data.player.click;
         enemyHealthDisplay.text = "HP: " + enemyHealth;
         levelDisplay.text = "Level: " + level + " - " + currentEnemyName;
@@ -99,9 +143,9 @@ public class Game : MonoBehaviour
 
     private void Attack()
     {
-        critAttack = Random.Range(1, 101);
+        randomizer = Random.Range(1, 101);
 
-        if (data.player.critChance >= critAttack)
+        if (data.player.critChance >= randomizer)
         {
             //playerData.click = playerData.click + (playerData.clickMultiplier * playerData.critMultiplier);
             enemyHealth -= (data.player.clickMultiplier * data.player.critMultiplier);
@@ -111,16 +155,17 @@ public class Game : MonoBehaviour
 
             if (enemyHealth == 0) // change picture + add vibes when enemy dies
             {
-                death.Play("deathAnimation");
+                clickImageAnimation.Play("deathAnimation");
                 Invoke("RandomizeEnemyImage", 0.5f); // wait 30 frames before running function
             }
                 
             critText.GetComponent<Text>().text = "クリティカル";
             critText.GetComponent<Animation>().Play("critAnimation");
 
-            /* NEED MORE CRIT IMAGES BEFORE IMPLEMENTING THIS PART
-            int imageSelector = Random.Range(1, 4);
-            switch (imageSelector)
+            // NEED MORE CRIT IMAGES BEFORE IMPLEMENTING THIS PART JK
+
+            randomizer = Random.Range(1, 4);
+            switch (randomizer)
             {
                 case 1:
                     tempImage.sprite = currentCrit1;
@@ -132,9 +177,8 @@ public class Game : MonoBehaviour
                     tempImage.sprite = currentCrit3;
                     break;
             }
-            */
 
-        }
+        } //end if
         else
         {
             //playerData.click = playerData.click + playerData.clickMultiplier; //get 1 vibe for every click
@@ -144,18 +188,18 @@ public class Game : MonoBehaviour
             if (enemyHealth < 0) //so that no negatives show up
                 enemyHealth = 0;
 
-            tempImage.sprite = currentEnemy; // to reset if crit image is the current
+            tempImage.sprite = currentEnemy; // to reset to non crit image if crit image is the current
 
             if (enemyHealth == 0) // change picture + add vibes when enemy dies
             {
-                death.Play("deathAnimation");
+                clickImageAnimation.Play("deathAnimation");
                 Invoke("RandomizeEnemyImage", 0.5f); // wait 30 frames before running function
             }
 
             //playerData.clickTotal = playerData.clickTotal + playerData.clickMultiplier;
             //tempImage.sprite = defaultStatue; //change statue back to non-glitched
-        }
-    }
+        } //end else
+    } //end attack() function
 
     private void RandomizeEnemyImage()
     {
@@ -167,7 +211,7 @@ public class Game : MonoBehaviour
 
         data.player.clickTotal += data.player.click;
 
-        int imageSelector = Random.Range(1, 6);
+        int imageSelector = Random.Range(1, 9);
         switch (imageSelector)
         {
             case 1:
@@ -179,37 +223,62 @@ public class Game : MonoBehaviour
                 currentEnemyName = "Solidarity Statue";
                 break;
             case 2:
-                currentEnemy = dolphinEnemy2;
-                //currentCrit1 = ;
-                //currentCrit2 = ;
-                //currentCrit3 = ;
-                tempImage.sprite = dolphinEnemy2;
+                currentEnemy = dolphinEnemy1;
+                currentCrit1 = critDolphin1red;
+                currentCrit2 = critDolphin2red;
+                currentCrit3 = critDolphin3red;
+                tempImage.sprite = dolphinEnemy1;
                 currentEnemyName = "Didactic Dolphin Squad One";
                 break;
             case 3:
-                currentEnemy = dolphinEnemy3;
-                //currentCrit1 = ;
-                //currentCrit2 = ;
-                //currentCrit3 = ;
-                tempImage.sprite = dolphinEnemy3;
+                currentEnemy = dolphinEnemy2;
+                currentCrit1 = critDolphin1green;
+                currentCrit2 = critDolphin2green;
+                currentCrit3 = critDolphin3green;
+                tempImage.sprite = dolphinEnemy2;
                 currentEnemyName = "Didactic Dolphin Squad Two";
                 break;
             case 4:
+                currentEnemy = dolphinEnemy3;
+                currentCrit1 = critDolphin1blue;
+                currentCrit2 = critDolphin2blue;
+                currentCrit3 = critDolphin3blue;
+                tempImage.sprite = dolphinEnemy3;
+                currentEnemyName = "Didactic Dolphin Squad Three";
+                break;
+            case 5:
                 currentEnemy = hotboydogEnemy;
-                //currentCrit1 = ;
-                //currentCrit2 = ;
-                //currentCrit3 = ;
+                //currentCrit1 = null;
+                //currentCrit2 = null;
+                //currentCrit3 = null;
                 tempImage.sprite = hotboydogEnemy;
                 currentEnemyName = "Halcyon HotDog Man";
                 break;
-            case 5:
-                currentEnemy = kingPalmEnemy;
-                //currentCrit1 = ;
-                //currentCrit2 = ;
-                //currentCrit3 = ;
-                tempImage.sprite = kingPalmEnemy;
-                currentEnemyName = "Kindred King Palm";
+            case 6:
+                currentEnemy = kingPalmEnemy1;
+                currentCrit1 = critPalm1Red;
+                currentCrit2 = critPalm2Red;
+                currentCrit3 = critPalm3Red;
+                tempImage.sprite = kingPalmEnemy1;
+                currentEnemyName = "Kindred King Palm I";
                 break;
-        }
-    }
-}
+            case 7:
+                currentEnemy = kingPalmEnemy2;
+                currentCrit1 = critPalm1Green;
+                currentCrit2 = critPalm2Green;
+                currentCrit3 = critPalm3Green;
+                tempImage.sprite = kingPalmEnemy2;
+                currentEnemyName = "Kindred King Palm II";
+                break;
+            case 8:
+                currentEnemy = kingPalmEnemy3;
+                currentCrit1 = critPalm1Blue;
+                currentCrit2 = critPalm2Blue;
+                currentCrit3 = critPalm3Blue;
+                tempImage.sprite = kingPalmEnemy3;
+                currentEnemyName = "Kindred King Palm III";
+                break;
+
+        } //end switch
+    } // end RandomizeEnemyImage() function
+} // end main
