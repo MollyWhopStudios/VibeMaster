@@ -512,7 +512,7 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 756952889}
   m_RootOrder: 11
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 39.152763}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 0}
@@ -620,6 +620,8 @@ Animation:
   m_Animation: {fileID: 7400000, guid: 32b708c40d40cfe45bf15c623c23b973, type: 2}
   m_Animations:
   - {fileID: 7400000, guid: 32b708c40d40cfe45bf15c623c23b973, type: 2}
+  - {fileID: 7400000, guid: 3612a70ef6641e04389c67ae1964bcb5, type: 2}
+  - {fileID: 7400000, guid: 5cbda763bdb3b454d9a1455986197286, type: 2}
   m_WrapMode: 0
   m_PlayAutomatically: 0
   m_AnimatePhysics: 0
@@ -1282,8 +1284,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
-  m_AnchoredPosition: {x: 0.000018358, y: -17.99997}
-  m_SizeDelta: {x: 190.46, y: 65.97}
+  m_AnchoredPosition: {x: 0.000022769, y: -83.5}
+  m_SizeDelta: {x: 91.33, y: 120.37}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &652872286
 MonoBehaviour:
@@ -1305,11 +1307,11 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 21300000, guid: 1f999eb0c276b3a48a7ef16b629245a3, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 7cdc2c707131fa14aa317cc1d0f18bc6, type: 3}
   m_Type: 3
   m_PreserveAspect: 1
   m_FillCenter: 1
-  m_FillMethod: 0
+  m_FillMethod: 1
   m_FillAmount: 1
   m_FillClockwise: 1
   m_FillOrigin: 0
@@ -2854,6 +2856,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Enemy Health Text
       objectReference: {fileID: 0}
+    - target: {fileID: 3217513648057217035, guid: 2bccd7e413741f94280a87b1bf7085a0,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3217513648057217034, guid: 2bccd7e413741f94280a87b1bf7085a0,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -2912,7 +2919,7 @@ PrefabInstance:
     - target: {fileID: 3217513648057217034, guid: 2bccd7e413741f94280a87b1bf7085a0,
         type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: -0.0017486
+      value: -0.0016717
       objectReference: {fileID: 0}
     - target: {fileID: 3217513648057217034, guid: 2bccd7e413741f94280a87b1bf7085a0,
         type: 3}
@@ -3081,12 +3088,12 @@ PrefabInstance:
     - target: {fileID: 3217513648057217034, guid: 2bccd7e413741f94280a87b1bf7085a0,
         type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: -0.0016708
+      value: 4.7
       objectReference: {fileID: 0}
     - target: {fileID: 3217513648057217034, guid: 2bccd7e413741f94280a87b1bf7085a0,
         type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 260.45
+      value: 251
       objectReference: {fileID: 0}
     - target: {fileID: 3217513648057217034, guid: 2bccd7e413741f94280a87b1bf7085a0,
         type: 3}
@@ -3720,8 +3727,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0.000030518, y: 217.15}
-  m_SizeDelta: {x: 295.43, y: 35.6}
+  m_AnchoredPosition: {x: -196.76, y: 123.7}
+  m_SizeDelta: {x: 78.52, y: 169.4}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2135019338
 MonoBehaviour:
@@ -3736,15 +3743,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.41509432, g: 0.41313633, b: 0.41313633, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 0}
-  m_Type: 0
+  m_Sprite: {fileID: 21300000, guid: 4a874bd5e04d33e46ac23fbfa99a9818, type: 3}
+  m_Type: 3
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 4
@@ -4045,7 +4052,7 @@ PrefabInstance:
         type: 3}
       propertyPath: kingPalmEnemy
       value: 
-      objectReference: {fileID: 21300000, guid: 6f35de6fc1e2b6848a104c9a50fbd272,
+      objectReference: {fileID: 21300000, guid: f25c46d887184da44bf710fc59eb1ad5,
         type: 3}
     - target: {fileID: 2422942621515881982, guid: 14944efc4422f164bbada3028fc30ef2,
         type: 3}
@@ -4081,6 +4088,138 @@ PrefabInstance:
       propertyPath: healthbar
       value: 
       objectReference: {fileID: 652872286}
+    - target: {fileID: 2422942621515881982, guid: 14944efc4422f164bbada3028fc30ef2,
+        type: 3}
+      propertyPath: dolphinEnemy1
+      value: 
+      objectReference: {fileID: 21300000, guid: 9636cc231e8063745957a15b26913ea1,
+        type: 3}
+    - target: {fileID: 2422942621515881982, guid: 14944efc4422f164bbada3028fc30ef2,
+        type: 3}
+      propertyPath: critDolphin1red
+      value: 
+      objectReference: {fileID: 21300000, guid: 84dff8b1860130d44ad780b9a810cd40,
+        type: 3}
+    - target: {fileID: 2422942621515881982, guid: 14944efc4422f164bbada3028fc30ef2,
+        type: 3}
+      propertyPath: critDolphin2red
+      value: 
+      objectReference: {fileID: 21300000, guid: 52a615ea8b9c6054c880260d4f1fa837,
+        type: 3}
+    - target: {fileID: 2422942621515881982, guid: 14944efc4422f164bbada3028fc30ef2,
+        type: 3}
+      propertyPath: critDolphin3red
+      value: 
+      objectReference: {fileID: 21300000, guid: 832d1c51ccf55234c8d466cda11e4f12,
+        type: 3}
+    - target: {fileID: 2422942621515881982, guid: 14944efc4422f164bbada3028fc30ef2,
+        type: 3}
+      propertyPath: critDolphin1green
+      value: 
+      objectReference: {fileID: 21300000, guid: 3058b211afd493d4bbb05ba5e5709593,
+        type: 3}
+    - target: {fileID: 2422942621515881982, guid: 14944efc4422f164bbada3028fc30ef2,
+        type: 3}
+      propertyPath: critDolphin2green
+      value: 
+      objectReference: {fileID: 21300000, guid: d4b1e2a14566c6b48ba4c6f35c7ffee1,
+        type: 3}
+    - target: {fileID: 2422942621515881982, guid: 14944efc4422f164bbada3028fc30ef2,
+        type: 3}
+      propertyPath: critDolphin3green
+      value: 
+      objectReference: {fileID: 21300000, guid: 381fd7dbd8ae08b42b066036e7878652,
+        type: 3}
+    - target: {fileID: 2422942621515881982, guid: 14944efc4422f164bbada3028fc30ef2,
+        type: 3}
+      propertyPath: critDolphin1blue
+      value: 
+      objectReference: {fileID: 21300000, guid: 45dd4da017a8f8a45bf4d871f47e775e,
+        type: 3}
+    - target: {fileID: 2422942621515881982, guid: 14944efc4422f164bbada3028fc30ef2,
+        type: 3}
+      propertyPath: critDolphin2blue
+      value: 
+      objectReference: {fileID: 21300000, guid: e54ddb3a43f5a2f4796f133b1ca6e5d9,
+        type: 3}
+    - target: {fileID: 2422942621515881982, guid: 14944efc4422f164bbada3028fc30ef2,
+        type: 3}
+      propertyPath: critDolphin3blue
+      value: 
+      objectReference: {fileID: 21300000, guid: 9e3a7c6cc3bf6c643bb726df8e1cae29,
+        type: 3}
+    - target: {fileID: 2422942621515881982, guid: 14944efc4422f164bbada3028fc30ef2,
+        type: 3}
+      propertyPath: kingPalmEnemy1
+      value: 
+      objectReference: {fileID: 21300000, guid: f25c46d887184da44bf710fc59eb1ad5,
+        type: 3}
+    - target: {fileID: 2422942621515881982, guid: 14944efc4422f164bbada3028fc30ef2,
+        type: 3}
+      propertyPath: kingPalmEnemy3
+      value: 
+      objectReference: {fileID: 21300000, guid: 80f2b42df2ca858419b054e492b3dc19,
+        type: 3}
+    - target: {fileID: 2422942621515881982, guid: 14944efc4422f164bbada3028fc30ef2,
+        type: 3}
+      propertyPath: kingPalmEnemy2
+      value: 
+      objectReference: {fileID: 21300000, guid: 1a13345ed46f0a04d8a072d70894cb5a,
+        type: 3}
+    - target: {fileID: 2422942621515881982, guid: 14944efc4422f164bbada3028fc30ef2,
+        type: 3}
+      propertyPath: critPalm1Green
+      value: 
+      objectReference: {fileID: 21300000, guid: d10e6dcc6ab83db459794ddbce7b282e,
+        type: 3}
+    - target: {fileID: 2422942621515881982, guid: 14944efc4422f164bbada3028fc30ef2,
+        type: 3}
+      propertyPath: critPalm2Green
+      value: 
+      objectReference: {fileID: 21300000, guid: 49cae4ef70bb5114394444e7a4b6008f,
+        type: 3}
+    - target: {fileID: 2422942621515881982, guid: 14944efc4422f164bbada3028fc30ef2,
+        type: 3}
+      propertyPath: critPalm3Green
+      value: 
+      objectReference: {fileID: 21300000, guid: e72df4a39d101cb4e9df5b2f1f441ed7,
+        type: 3}
+    - target: {fileID: 2422942621515881982, guid: 14944efc4422f164bbada3028fc30ef2,
+        type: 3}
+      propertyPath: critPalm1Red
+      value: 
+      objectReference: {fileID: 21300000, guid: 58e19cce5d7248a4787afacb35dc6283,
+        type: 3}
+    - target: {fileID: 2422942621515881982, guid: 14944efc4422f164bbada3028fc30ef2,
+        type: 3}
+      propertyPath: critPalm2Red
+      value: 
+      objectReference: {fileID: 21300000, guid: bc4578163a11ca54d9fb685eb7939db4,
+        type: 3}
+    - target: {fileID: 2422942621515881982, guid: 14944efc4422f164bbada3028fc30ef2,
+        type: 3}
+      propertyPath: critPalm3Red
+      value: 
+      objectReference: {fileID: 21300000, guid: d7a2df4959b595d48809384c70e49492,
+        type: 3}
+    - target: {fileID: 2422942621515881982, guid: 14944efc4422f164bbada3028fc30ef2,
+        type: 3}
+      propertyPath: critPalm1Blue
+      value: 
+      objectReference: {fileID: 21300000, guid: 5e6f57c0d9e80964087760b6ed948082,
+        type: 3}
+    - target: {fileID: 2422942621515881982, guid: 14944efc4422f164bbada3028fc30ef2,
+        type: 3}
+      propertyPath: critPalm2Blue
+      value: 
+      objectReference: {fileID: 21300000, guid: 65eb715725d16764e8c6d9edf63ecd73,
+        type: 3}
+    - target: {fileID: 2422942621515881982, guid: 14944efc4422f164bbada3028fc30ef2,
+        type: 3}
+      propertyPath: critPalm3Blue
+      value: 
+      objectReference: {fileID: 21300000, guid: 71ae52bfda312d8408c04844cdc297af,
+        type: 3}
     - target: {fileID: 2422942621515881977, guid: 14944efc4422f164bbada3028fc30ef2,
         type: 3}
       propertyPath: m_LocalPosition.x
