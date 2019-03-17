@@ -9,27 +9,32 @@ public class SceneLoader : MonoBehaviour
 
     public GameObject shopPanel;
     public GameObject statsPanel;
+    public GameObject miniMenuPanel;
+
+    public AudioSource shopSound;
+    public AudioSource miniMenuSound;
+    public AudioSource statsSound;
 
     Animation slide;
 
     public void OpenShopAnimation()
     {
         slide = shopPanel.GetComponent<Animation>();
-
+        shopSound.Play();
         slide.Play("shopPanelSlide");
     }
 
     public void CloseShopAnimation()
     {
         slide = shopPanel.GetComponent<Animation>();
-
+        shopSound.Play();
         slide.Play("shopPanelSlideOff");
     }
 
     public void OpenStatsAnimation()
     {
         slide = statsPanel.GetComponent<Animation>();
-
+        statsSound.Play();
         slide.Play("statsPanelSlide");
     }
 
@@ -37,8 +42,23 @@ public class SceneLoader : MonoBehaviour
     public void CloseStatsAnimation()
     {
         slide = statsPanel.GetComponent<Animation>();
-
+        statsSound.Play();
         slide.Play("statsPanelSlideOff");
+    }
+
+    public void OpenMiniMenuAnimation()
+    {
+        slide = miniMenuPanel.GetComponent<Animation>();
+        miniMenuSound.Play();
+        slide.Play("miniMenuPanelSlide");
+    }
+
+
+    public void CloseMiniMenuAnimation()
+    {
+        slide = miniMenuPanel.GetComponent<Animation>();
+        miniMenuSound.Play();
+        slide.Play("miniMenuPanelSlideOff");
     }
 
     public void LoadNextScene()

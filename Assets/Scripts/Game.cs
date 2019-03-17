@@ -9,6 +9,9 @@ public class Game : MonoBehaviour
     // -------------------------------------------------------
     public GameObject critText;   // animation to play when crit
     public GameObject clickImage; // main button to acquire clicks
+
+    public AudioSource critSound; // holds the crit sound
+
     /* Images */
     [Header("Image Data")]
     [HideInInspector] public Sprite currentEnemy; // picture to reset from crit image
@@ -50,6 +53,21 @@ public class Game : MonoBehaviour
     public Sprite critPalm1Blue;
     public Sprite critPalm2Blue;
     public Sprite critPalm3Blue;
+
+    public Sprite beetle;
+    public Sprite critBeetle1;
+    public Sprite critBeetle2;
+    public Sprite critBeetle3;
+
+    public Sprite microwave;
+    public Sprite critMicrowave1;
+    public Sprite critMicrowave2;
+    public Sprite critMicrowave3;
+
+    public Sprite VHS;
+    public Sprite critVHS1;
+    public Sprite critVHS2;
+    public Sprite critVHS3;
 
     public Sprite hotboydogEnemy;
     
@@ -122,7 +140,7 @@ public class Game : MonoBehaviour
                     clickImageAnimation.PlayQueued("idleEnemyWiggle");
                     break;
                 case 2:
-                    clickImageAnimation.Play("idleEnemyPulse");
+                    clickImageAnimation.PlayQueued("idleEnemyPulse");
                     break;
             }
         }
@@ -153,6 +171,8 @@ public class Game : MonoBehaviour
             float tempHealth = data.enemy.GetHealth();
             //playerData.click = playerData.click + (playerData.clickMultiplier * playerData.critMultiplier);
             tempHealth -= (data.player.clickMultiplier * data.player.critMultiplier);
+
+            critSound.Play();
 
             if (tempHealth < 0) //so that no negatives show up
                 tempHealth = 0;
@@ -219,7 +239,7 @@ public class Game : MonoBehaviour
 
         data.player.clickTotal += data.player.click;
 
-        int imageSelector = Random.Range(1, 9);
+        int imageSelector = Random.Range(1, 12);
         switch (imageSelector)
         {
             case 1:
@@ -285,6 +305,33 @@ public class Game : MonoBehaviour
                 currentCrit3 = critPalm3Blue;
                 tempImage.sprite = kingPalmEnemy3;
                 currentEnemyName = "Kindred King Palm III";
+                break;
+
+            case 9:
+                currentEnemy = beetle;
+                currentCrit1 = critBeetle1;
+                currentCrit2 = critBeetle2;
+                currentCrit3 = critBeetle3;
+                tempImage.sprite = beetle;
+                currentEnemyName = "Big Ballin Beetle";
+                break;
+
+            case 10:
+                currentEnemy = microwave;
+                currentCrit1 = critMicrowave1;
+                currentCrit2 = critMicrowave2;
+                currentCrit3 = critMicrowave3;
+                tempImage.sprite = microwave;
+                currentEnemyName = "Magnanimous Microwave";
+                break;
+
+            case 11:
+                currentEnemy = VHS;
+                currentCrit1 = critVHS1;
+                currentCrit2 = critVHS2;
+                currentCrit3 = critVHS3;
+                tempImage.sprite = VHS;
+                currentEnemyName = "Volumptuous VHS";
                 break;
 
         } //end switch
