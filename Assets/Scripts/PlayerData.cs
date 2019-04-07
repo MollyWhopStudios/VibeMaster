@@ -27,14 +27,16 @@ public class PlayerData
     [DataMember]
     public int passiveGain;
 
+    // Player Data of enemy level
+    // saves and loads to file
+    [DataMember]
+    public int enemyLevel;
+    public int GetLevel() { return enemyLevel; }
+    public void SetLevel(int level) { this.enemyLevel = level; }
+
     public PlayerData()
     {
-      click = 0;
-      clickTotal = 0;
-      clickMultiplier = 1;
-      critChance = 1f;
-      critMultiplier = 3;
-      passiveGain = 0;
+        ResetData();
     }
 
     // Shop Values
@@ -53,6 +55,7 @@ public class PlayerData
         critChance = 1f;
         critMultiplier = 3;
         passiveGain = 0;
+        enemyLevel = 1;
     }
 
     public int GetUpgradeTier(int upgrade) { return shopUpgradeLevel[upgrade]; }
@@ -138,6 +141,9 @@ public class PlayerData
         data.critMultiplier = critMultiplier;
         data.passiveGain = passiveGain;
 
+        data.enemyLevel = enemyLevel;
+
+
         //Serialize to xml
         DataContractSerializer bf = new DataContractSerializer(data.GetType());
         MemoryStream streamer = new MemoryStream();
@@ -179,5 +185,7 @@ public class PlayerData
         critChance = newData.critChance;
         critMultiplier = newData.critMultiplier;
         passiveGain = newData.passiveGain;
+
+        enemyLevel = newData.enemyLevel;
     }
 }
