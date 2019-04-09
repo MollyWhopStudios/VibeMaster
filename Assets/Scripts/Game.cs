@@ -19,7 +19,7 @@ public class Game : MonoBehaviour
     [HideInInspector] public Sprite currentCrit2;
     [HideInInspector] public Sprite currentCrit3;
 
-    public Sprite defaultStatue; 
+    public Sprite defaultStatue;
     public Sprite critStatue1;
     public Sprite critStatue2;
     public Sprite critStatue3;
@@ -70,7 +70,7 @@ public class Game : MonoBehaviour
     public Sprite critVHS3;
 
     public Sprite hotboydogEnemy;
-    
+
 
     // -------------------------------------------------------
     // cached data
@@ -90,13 +90,13 @@ public class Game : MonoBehaviour
 
     // enemy data mechanics --------------------------------------------------------------------------------
     [Header("Enemy Data")]
-    public int level         = 1;           // used to track how many enemies killed; how to scale enemy difficulty (health)
-    public int baseReward    = 20;          // starting base point reward for killing enemy
-    public int baseHealth    = 10;          // starting point for enemy health initialization
-    public float rewardScaling      = 1.1f; // scaling vibes earned after killing enemy
+    public int level = 1;           // used to track how many enemies killed; how to scale enemy difficulty (health)
+    public int baseReward = 20;          // starting base point reward for killing enemy
+    public int baseHealth = 10;          // starting point for enemy health initialization
+    public float rewardScaling = 1.1f; // scaling vibes earned after killing enemy
     public float enemyHealthScaling = 1.5f; // used to reset enemy health values for higher levels
-    public float enemyHealth        = 0;    // enemy health values
-    public float enemyMaxHealth     = 0;    // to use for calculating enemy health bar
+    public float enemyHealth = 0;    // enemy health values
+    public float enemyMaxHealth = 0;    // to use for calculating enemy health bar
 
 
     Animation death;
@@ -118,7 +118,7 @@ public class Game : MonoBehaviour
         currentCrit1 = critStatue1;
         currentCrit2 = critStatue2;
         currentCrit3 = critStatue3;
-        
+
         //extract image from game object to change it later
         tempImage = clickImage.GetComponent<Image>();
         score.GetComponent<TextMeshProUGUI>();
@@ -131,7 +131,7 @@ public class Game : MonoBehaviour
     void Update()
     {
         // ---------- mechanic to randomize idle enemy animation -------------
-        if(!clickImageAnimation.isPlaying)
+        if (!clickImageAnimation.isPlaying)
         {
             randomizer = Random.Range(1, 3);
             switch (randomizer)
@@ -158,7 +158,7 @@ public class Game : MonoBehaviour
 
     public void ButtonClick()
     {
-        if(data.enemy.GetHealth() > 0)
+        if (data.enemy.GetHealth() > 0)
             Attack();
     }
 
@@ -182,7 +182,7 @@ public class Game : MonoBehaviour
                 clickImageAnimation.Play("deathAnimation");
                 Invoke("RandomizeEnemyImage", 0.5f); // wait 30 frames before running function
             }
-                
+
             critText.GetComponent<Text>().text = "クリティカル";
             critText.GetComponent<Animation>().Play("critAnimation");
 
@@ -201,9 +201,11 @@ public class Game : MonoBehaviour
                     tempImage.sprite = currentCrit3;
                     break;
             }
-        } //end if
             data.enemy.SetHealth(tempHealth);
-        }
+        } //end if
+        
+        
+
         else
         {
             float tempHealth = data.enemy.GetHealth();
@@ -224,12 +226,12 @@ public class Game : MonoBehaviour
 
             //playerData.clickTotal = playerData.clickTotal + playerData.clickMultiplier;
             //tempImage.sprite = defaultStatue; //change statue back to non-glitched
+            data.enemy.SetHealth(tempHealth);
         } //end else
     } //end attack() function
 
-            data.enemy.SetHealth(tempHealth);
-        }
-    }
+            
+
 
     private void RandomizeEnemyImage()
     {
