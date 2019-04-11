@@ -96,12 +96,12 @@ public class SceneLoader : MonoBehaviour
     {
         SceneManager.LoadScene("Mini Games");
     }
-
+    /*
     public void LoadTowerDefenseScreen()
     {
         SceneManager.LoadScene("Level 1");
     }
-
+    */
     public void LoadBulletHellScreen()
     {
         SceneManager.LoadScene("Bullet Hell");
