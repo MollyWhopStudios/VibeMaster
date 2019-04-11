@@ -160,6 +160,8 @@ public class Game : MonoBehaviour
     {
         if (data.enemy.GetHealth() > 0)
             Attack();
+
+        //data.player.clickTotal++;
     }
 
     private void Attack()
@@ -236,10 +238,14 @@ public class Game : MonoBehaviour
     private void RandomizeEnemyImage()
     {
         data.player.click += (data.enemy.GetLevel() * data.enemy.GetBaseReward() * data.enemy.GetRewardScaling());
+        data.player.clickTotal += (data.enemy.GetLevel() * data.enemy.GetBaseReward() * data.enemy.GetRewardScaling());
+
         data.LevelUp(); // increments both player and enemy stored data (level++)
         data.enemy.CalculateEnemyHealth();
 
-        data.player.clickTotal += data.player.click;
+        //data.player.clickTotal += data.player.click;
+
+        
 
         int imageSelector = Random.Range(1, 12);
         switch (imageSelector)
