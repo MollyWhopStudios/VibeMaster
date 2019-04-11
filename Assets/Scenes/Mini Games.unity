@@ -190,18 +190,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 203703242}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1798818298}
-        m_MethodName: LoadTowerDefenseScreen
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!114 &203703242
@@ -1465,6 +1454,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gameOverDelayInSeconds: 3
+  shopPanel: {fileID: 0}
+  statsPanel: {fileID: 0}
+  miniMenuPanel: {fileID: 0}
+  shopSound: {fileID: 0}
+  miniMenuSound: {fileID: 0}
+  statsSound: {fileID: 0}
 --- !u!4 &1798818299
 Transform:
   m_ObjectHideFlags: 0
@@ -2034,11 +2029,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1203991560}
     m_Modifications:
-    - target: {fileID: 4252138241439006244, guid: e8b1c96f8affaa74ca659e9f541d3ab4,
-        type: 3}
-      propertyPath: m_Name
-      value: BG
-      objectReference: {fileID: 0}
     - target: {fileID: 4252138241439006267, guid: e8b1c96f8affaa74ca659e9f541d3ab4,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -2143,6 +2133,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Pivot.y
       value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 4252138241439006244, guid: e8b1c96f8affaa74ca659e9f541d3ab4,
+        type: 3}
+      propertyPath: m_Name
+      value: BG
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e8b1c96f8affaa74ca659e9f541d3ab4, type: 3}
