@@ -367,6 +367,11 @@ PrefabInstance:
       propertyPath: m_Color.b
       value: 0.4669811
       objectReference: {fileID: 0}
+    - target: {fileID: 7429654221054324874, guid: f718afaeaf1305e43bb342b80ee641a7,
+        type: 3}
+      propertyPath: m_Name
+      value: Start Text
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f718afaeaf1305e43bb342b80ee641a7, type: 3}
 --- !u!224 &709742667 stripped
@@ -1741,7 +1746,7 @@ PrefabInstance:
     - target: {fileID: 4252138241439006244, guid: e8b1c96f8affaa74ca659e9f541d3ab4,
         type: 3}
       propertyPath: m_Name
-      value: BG
+      value: OpaqueBackground
       objectReference: {fileID: 0}
     - target: {fileID: 4252138241439006267, guid: e8b1c96f8affaa74ca659e9f541d3ab4,
         type: 3}
