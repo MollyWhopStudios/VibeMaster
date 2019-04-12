@@ -10,6 +10,8 @@ public class Game : MonoBehaviour
     public GameObject critText;   // animation to play when crit
     public GameObject clickImage; // main button to acquire clicks
 
+    public TextMeshProUGUI ticketTextDisplay; // temp text variable for # of tickets
+
     public AudioSource critSound; // holds the crit sound
 
     /* Images */
@@ -126,6 +128,8 @@ public class Game : MonoBehaviour
         levelDisplay.GetComponent<TextMeshProUGUI>();
 
         clickImageAnimation = clickImage.GetComponent<Animation>();
+
+        ticketTextDisplay.GetComponent<TextMeshProUGUI>(); //get component for ticket number content display
     }
 
     void Update()
@@ -154,6 +158,8 @@ public class Game : MonoBehaviour
         enemyHealthDisplay.text = "HP: " + data.enemy.GetHealth();
         levelDisplay.text = "Level: " + data.enemy.GetLevel() + " - " + currentEnemyName;
         healthbar.fillAmount = data.enemy.GetHealth() / data.enemy.GetMaxHealth();
+
+        ticketTextDisplay.text = "x " + 0;
     }
 
     public void ButtonClick()
