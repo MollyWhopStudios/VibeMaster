@@ -3096,7 +3096,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_text: Click Total Display
+  m_text: Total Vibes Earned
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: d140b3d38b84d7a448aa7fcb045e70c5, type: 2}
   m_sharedMaterial: {fileID: 21309918311207068, guid: d140b3d38b84d7a448aa7fcb045e70c5,
