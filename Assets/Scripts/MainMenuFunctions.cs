@@ -6,16 +6,38 @@ using UnityEngine.UI;
 public class MainMenuFunctions : MonoBehaviour
 {
     public Image critter;
+    public Image critterTwo;
+
+    [SerializeField] bool looping = false;
+
 
     Animation a;
+    /*
+    public void Start()
+    {
+        StartCoroutine(CritterAnimation());
+    }*/
 
     IEnumerator Start()
     {
-        yield return new WaitForSeconds(20f);
-        a = critter.GetComponent<Animation>();
-        a.Play("critterJiggle");
-        
+        do
+        {
+            yield return new WaitForSeconds(3f);
+            a = critter.GetComponent<Animation>();
+            a.Play("critterJiggle");
+            yield return new WaitForSeconds(4f);
 
+            a = critterTwo.GetComponent<Animation>();
+            a.Play("lozanoPeek");
+            yield return new WaitForSeconds(2f);
+        } while (looping);
+        
+        
+    }
+
+
+
+       
 
         /* REFERENCING
         a = W.GetComponent<Animation>();
@@ -43,5 +65,4 @@ public class MainMenuFunctions : MonoBehaviour
 
     */
 
-    }
 }
