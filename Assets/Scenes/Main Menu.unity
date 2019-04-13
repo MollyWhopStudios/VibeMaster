@@ -1769,6 +1769,12 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!82 &1723052339 stripped
+AudioSource:
+  m_CorrespondingSourceObject: {fileID: 572486754048283223, guid: b482bce277991544cb7ad410f36d3d44,
+    type: 3}
+  m_PrefabInstance: {fileID: 7407603370282321032}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &1761795038 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7242564888463993288, guid: d56cce2f5532f0c49b91c1486483995a,
@@ -3085,5 +3091,15 @@ PrefabInstance:
       propertyPath: Loop
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 572486754048283223, guid: b482bce277991544cb7ad410f36d3d44,
+        type: 3}
+      propertyPath: m_PlayOnAwake
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7075047963742757111, guid: b482bce277991544cb7ad410f36d3d44,
+        type: 3}
+      propertyPath: currentSong
+      value: 
+      objectReference: {fileID: 1723052339}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b482bce277991544cb7ad410f36d3d44, type: 3}

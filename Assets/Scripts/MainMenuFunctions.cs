@@ -43,6 +43,8 @@ public class MainMenuFunctions : MonoBehaviour
 
             StartCoroutine(critterAnim());
 
+            StopCoroutine(critterAnim());
+
         } while (looping);
         
         
