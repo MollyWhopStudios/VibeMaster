@@ -31,6 +31,9 @@ public class MusicPlayer : MonoBehaviour
     }
     */
 
+
+   
+    
     public void PlaySong()
     {
         currentSong.Play();
@@ -40,6 +43,12 @@ public class MusicPlayer : MonoBehaviour
     {
         currentSong.Stop();
     }
+
+    public void PauseSong()
+    {
+        currentSong.Pause();
+    }
+
 
     public void SetVolume(float newVolume)
     {
@@ -64,6 +73,23 @@ public class MusicPlayer : MonoBehaviour
     public void FadeIn()
     {
         StartCoroutine(FadeI());
+    }
+
+    public void VolumeUp()
+    {
+        if(currentSong.volume < 1)
+            currentSong.volume += 0.05f;
+    }
+
+    public void VolumeDown()
+    {
+        if(currentSong.volume > 0)
+            currentSong.volume -= 0.05f;
+    }
+
+    public bool isPlaying()
+    {
+        return currentSong.isPlaying;
     }
 
     private IEnumerator FadeO()
