@@ -5,6 +5,8 @@ using UnityEngine;
 
 public class MusicPlayer : MonoBehaviour
 {
+    public AudioSource currentSong;
+
     private void Awake()
     {
         SetUpSingleton();
@@ -21,4 +23,71 @@ public class MusicPlayer : MonoBehaviour
             DontDestroyOnLoad(gameObject);
         }
     }
+
+    /*
+    private void playSong()
+    {
+        currentSong.Play();
+    }
+    */
+
+    public void PlaySong()
+    {
+        currentSong.Play();
+    }
+
+    public void StopSong()
+    {
+        currentSong.Stop();
+    }
+
+    public void SetVolume(float newVolume)
+    {
+        currentSong.volume = newVolume;
+    }
+
+    public void ChangeSong(AudioClip newSong)
+    {
+        if (currentSong.clip.name == newSong.name)
+            return;
+
+        currentSong.Stop();
+        currentSong.clip = newSong;
+        currentSong.Play();
+    }
+
+    public void FadeOut()
+    {
+        StartCoroutine(FadeO());
+    }
+
+    public void FadeIn()
+    {
+        StartCoroutine(FadeI());
+    }
+
+    private IEnumerator FadeO()
+    {
+        while (currentSong.volume > 0)
+        {
+            currentSong.volume -= (float)0.01;
+            yield return new WaitForSeconds(0.03f);
+        }
+
+        currentSong.Stop();
+
+        StopCoroutine(FadeO());
+    }
+
+    private IEnumerator FadeI()
+    {
+        while (currentSong.volume < 1)
+        {
+            currentSong.volume += (float)0.01;
+            yield return new WaitForSeconds(0.03f);
+        }
+
+        StopCoroutine(FadeI());
+    }
+
 }

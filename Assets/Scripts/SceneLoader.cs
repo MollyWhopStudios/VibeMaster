@@ -10,12 +10,38 @@ public class SceneLoader : MonoBehaviour
     public GameObject shopPanel;
     public GameObject statsPanel;
     public GameObject miniMenuPanel;
+    public GameObject musicPanel;
+
+    bool musicPanelOn = false; // for using same button to open and close
 
     public AudioSource shopSound;
     public AudioSource miniMenuSound;
     public AudioSource statsSound;
 
     Animation slide;
+
+    private MusicPlayer currentSong;
+
+    private void Start()
+    {
+        currentSong = FindObjectOfType<MusicPlayer>();
+    }
+
+    public void musicPanelSlide()
+    {
+        slide = musicPanel.GetComponent<Animation>();
+        if(musicPanelOn)
+        {
+            slide.Play("musicPanelSlideOff");
+            musicPanelOn = false;
+        }
+        else
+        {
+            slide.Play("musicPanelSlide");
+            musicPanelOn = true;
+        }
+
+    }
 
     public void OpenShopAnimation()
     {
@@ -75,11 +101,15 @@ public class SceneLoader : MonoBehaviour
     public void LoadGameScreen()
     {
         SceneManager.LoadScene("Game");
+
+        currentSong.FadeOut();
     }
 
     public void LoadOptionsScreen()
     {
         SceneManager.LoadScene("Options");
+
+        
     }
 
     public void LoadShopScreen()
