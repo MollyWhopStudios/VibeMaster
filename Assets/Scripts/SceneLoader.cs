@@ -12,7 +12,7 @@ public class SceneLoader : MonoBehaviour
     public GameObject miniMenuPanel;
     public GameObject musicPanel;
 
-    bool musicPanelOn = false; // for using same button to open and close
+    bool musicPanelOn = false; // for using same button to open and close music panel
 
     public AudioSource shopSound;
     public AudioSource miniMenuSound;
@@ -103,6 +103,7 @@ public class SceneLoader : MonoBehaviour
         SceneManager.LoadScene("Game");
 
         currentSong.FadeOut();
+
     }
 
     public void LoadOptionsScreen()
