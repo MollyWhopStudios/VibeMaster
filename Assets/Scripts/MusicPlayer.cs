@@ -32,8 +32,6 @@ public class MusicPlayer : MonoBehaviour
     */
 
 
-   
-    
     public void PlaySong()
     {
         currentSong.Play();
@@ -53,6 +51,11 @@ public class MusicPlayer : MonoBehaviour
     public void SetVolume(float newVolume)
     {
         currentSong.volume = newVolume;
+    }
+
+    public float GetVolume()
+    {
+        return currentSong.volume;
     }
 
     public void ChangeSong(AudioClip newSong)

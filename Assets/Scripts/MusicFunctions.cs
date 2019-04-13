@@ -13,6 +13,7 @@ public class MusicFunctions : MonoBehaviour
     public bool pause = false;
 
     int songTracker = 0;
+    float volume;
 
     // Start is called before the first frame update
     void Start()
@@ -30,6 +31,8 @@ public class MusicFunctions : MonoBehaviour
         currentSong.SetVolume(0f);
         currentSong.PlaySong();
         currentSong.FadeIn();
+
+        volume = currentSong.GetVolume();
     }
 
     private void Update()
@@ -43,6 +46,7 @@ public class MusicFunctions : MonoBehaviour
 
             currentSong.StopSong();
             currentSong.ChangeSong(trackList[songTracker]);
+            currentSong.SetVolume(volume);
             currentSong.PlaySong();
         }
     }
@@ -57,6 +61,7 @@ public class MusicFunctions : MonoBehaviour
 
         currentSong.StopSong();
         currentSong.ChangeSong(trackList[songTracker]);
+        currentSong.SetVolume(volume);
         currentSong.PlaySong();
     }
 
@@ -69,17 +74,20 @@ public class MusicFunctions : MonoBehaviour
 
         currentSong.StopSong();
         currentSong.ChangeSong(trackList[songTracker]);
+        currentSong.SetVolume(volume);
         currentSong.PlaySong();
     }
 
     public void VolumeUp()
     {
         currentSong.VolumeUp();
+        volume = currentSong.GetVolume();
     }
 
     public void VolumeDown()
     {
         currentSong.VolumeDown();
+        volume = currentSong.GetVolume();
     }
 
     public void PauseSong()
