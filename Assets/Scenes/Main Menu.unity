@@ -1814,6 +1814,7 @@ MonoBehaviour:
   shopPanel: {fileID: 0}
   statsPanel: {fileID: 0}
   miniMenuPanel: {fileID: 0}
+  musicPanel: {fileID: 0}
   shopSound: {fileID: 0}
   miniMenuSound: {fileID: 0}
   statsSound: {fileID: 0}
@@ -3026,6 +3027,21 @@ PrefabInstance:
       propertyPath: m_Name
       value: Music Player
       objectReference: {fileID: 0}
+    - target: {fileID: 572486754048283223, guid: b482bce277991544cb7ad410f36d3d44,
+        type: 3}
+      propertyPath: m_audioClip
+      value: 
+      objectReference: {fileID: 8300000, guid: d579e706a716af947ad8820690e2223f, type: 3}
+    - target: {fileID: 572486754048283223, guid: b482bce277991544cb7ad410f36d3d44,
+        type: 3}
+      propertyPath: Loop
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 572486754048283223, guid: b482bce277991544cb7ad410f36d3d44,
+        type: 3}
+      propertyPath: m_PlayOnAwake
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 2218365276313695070, guid: b482bce277991544cb7ad410f36d3d44,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -3080,21 +3096,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 572486754048283223, guid: b482bce277991544cb7ad410f36d3d44,
-        type: 3}
-      propertyPath: m_audioClip
-      value: 
-      objectReference: {fileID: 8300000, guid: 68ef1980967c6b447927a1a2fce276fb, type: 3}
-    - target: {fileID: 572486754048283223, guid: b482bce277991544cb7ad410f36d3d44,
-        type: 3}
-      propertyPath: Loop
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 572486754048283223, guid: b482bce277991544cb7ad410f36d3d44,
-        type: 3}
-      propertyPath: m_PlayOnAwake
-      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7075047963742757111, guid: b482bce277991544cb7ad410f36d3d44,
         type: 3}
