@@ -2214,7 +2214,7 @@ PrefabInstance:
     - target: {fileID: 1144466305375378097, guid: 9d7076f5e133c1447a6843554ccd834f,
         type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 4.6000366
+      value: 4.6000977
       objectReference: {fileID: 0}
     - target: {fileID: 1144466305375378097, guid: 9d7076f5e133c1447a6843554ccd834f,
         type: 3}
@@ -3046,7 +3046,7 @@ PrefabInstance:
         type: 3}
       propertyPath: m_audioClip
       value: 
-      objectReference: {fileID: 8300000, guid: d579e706a716af947ad8820690e2223f, type: 3}
+      objectReference: {fileID: 8300000, guid: 707bca44d6732a14c87a44a55a616397, type: 3}
     - target: {fileID: 572486754048283223, guid: b482bce277991544cb7ad410f36d3d44,
         type: 3}
       propertyPath: Loop
@@ -3055,7 +3055,7 @@ PrefabInstance:
     - target: {fileID: 572486754048283223, guid: b482bce277991544cb7ad410f36d3d44,
         type: 3}
       propertyPath: m_PlayOnAwake
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2218365276313695070, guid: b482bce277991544cb7ad410f36d3d44,
         type: 3}

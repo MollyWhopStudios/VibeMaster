@@ -11,7 +11,12 @@ public class MusicPlayer : MonoBehaviour
 
     public AudioSource currentSong;
 
+    
     public TextMeshProUGUI songNameDisplay;
+
+    public TextMeshProUGUI volumeDisplay;
+
+    Animation volumeChange;
 
     int songTracker = 0;
     float volume;
@@ -21,9 +26,14 @@ public class MusicPlayer : MonoBehaviour
 
     private void Awake()
     {
-        SetUpSingleton();
+        //SetUpSingleton();
+
+        DontDestroyOnLoad(transform.gameObject);
+        currentSong = GetComponent<AudioSource>();
     }
 
+
+    /*
     private void SetUpSingleton()
     {
         if (FindObjectsOfType(GetType()).Length > 1)
@@ -35,10 +45,14 @@ public class MusicPlayer : MonoBehaviour
             DontDestroyOnLoad(gameObject);
         }
     }
+    */
+
 
     public void Start()
     {
         songNameDisplay.GetComponent<TextMeshProUGUI>();
+
+        volumeChange = volumeDisplay.GetComponent<Animation>();
 
         trackList = new AudioClip[] { (AudioClip) Resources.Load("guitar center"),
             (AudioClip) Resources.Load("Iced Apples"),
@@ -76,6 +90,12 @@ public class MusicPlayer : MonoBehaviour
         }
 
         songNameDisplay.text = currentSong.clip.name;
+
+        volumeDisplay.text = string.Format("{0:0,%}", Math.Round((volume * 1000)));
+
+        
+
+        //volumeDisplay.text = volume * 100 + "%";
     }
 
     public void NextSong()
@@ -165,17 +185,45 @@ public class MusicPlayer : MonoBehaviour
         {
             volume += 0.025f;
             currentSong.volume = volume;
+
+            if (currentSong.volume > 1)
+            {
+                volume = 1;
+                currentSong.volume = volume;
+            }
         }
-            
+
+        if (volumeChange.isPlaying)
+        {
+            volumeChange.Stop();
+            volumeChange.Play("volumeChangeAnimation");
+        }
+        else
+            volumeChange.Play("volumeChangeAnimation");
+
     }
 
     public void VolumeDown()
     {
-        if(currentSong.volume > 0)
+        if(volume > 0)
         {
             volume -= 0.025f;
             currentSong.volume = volume;
+
+            if (volume < 0)
+            {
+                volume = 0;
+                currentSong.volume = volume;
+            }
         }
+
+        if(volumeChange.isPlaying)
+        {
+            volumeChange.Stop();
+            volumeChange.Play("volumeChangeAnimation");
+        }
+        else
+            volumeChange.Play("volumeChangeAnimation");
     }
 
     public bool isPlaying()
@@ -191,6 +239,8 @@ public class MusicPlayer : MonoBehaviour
             yield return new WaitForSeconds(0.03f);
         }
 
+        yield return new WaitForSeconds(2);
+
         currentSong.Stop();
 
         StopCoroutine(FadeO());
@@ -198,6 +248,8 @@ public class MusicPlayer : MonoBehaviour
 
     private IEnumerator FadeI()
     {
+        yield return new WaitForSeconds(1);
+
         while (currentSong.volume < volume)
         {
             currentSong.volume += (float)0.01;
