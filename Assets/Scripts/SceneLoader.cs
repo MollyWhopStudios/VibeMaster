@@ -103,6 +103,7 @@ public class SceneLoader : MonoBehaviour
         SceneManager.LoadScene("Game");
 
         currentSong.FadeOut();
+        //currentSong.NextSong();
 
     }
 

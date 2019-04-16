@@ -10,6 +10,9 @@ public class Game : MonoBehaviour
     public GameObject critText;   // animation to play when crit
     public GameObject clickImage; // main button to acquire clicks
 
+    float originX = 960f; //variables to center an object
+    float originY = 540f;
+
     public TextMeshProUGUI ticketTextDisplay; // temp text variable for # of tickets
 
     public AudioSource critSound; // holds the crit sound
@@ -127,6 +130,8 @@ public class Game : MonoBehaviour
         enemyHealthDisplay.GetComponent<TextMeshProUGUI>();
         levelDisplay.GetComponent<TextMeshProUGUI>();
 
+
+
         clickImageAnimation = clickImage.GetComponent<Animation>();
 
         ticketTextDisplay.GetComponent<TextMeshProUGUI>(); //get component for ticket number content display
@@ -150,6 +155,7 @@ public class Game : MonoBehaviour
         }
         //---------------------------------------------------------------------
         UpdateDisplay();
+        
     }
 
     private void UpdateDisplay()
@@ -166,6 +172,9 @@ public class Game : MonoBehaviour
     {
         if (data.enemy.GetHealth() > 0)
             Attack();
+
+        tempImage.transform.position = new Vector2(originX, originY);
+
 
         //data.player.clickTotal++;
     }
@@ -229,7 +238,7 @@ public class Game : MonoBehaviour
             if (tempHealth == 0) // change picture + add vibes when enemy dies
             {
                 clickImageAnimation.Play("deathAnimation");
-                Invoke("RandomizeEnemyImage", 0.5f); // wait 30 frames before running function
+                Invoke("RandomizeEnemyImage", 0.5f); // wait 30 frames before running method
             }
 
             //playerData.clickTotal = playerData.clickTotal + playerData.clickMultiplier;
