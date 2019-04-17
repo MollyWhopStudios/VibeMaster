@@ -10,6 +10,9 @@ public class Game : MonoBehaviour
     public GameObject critText;   // animation to play when crit
     public GameObject clickImage; // main button to acquire clicks
 
+    [SerializeField]
+    bool passiveDamageIsRunning = true; // turn on and off passive damage
+
     float originX = 960f; //variables to center an object
     float originY = 540f;
 
@@ -130,7 +133,7 @@ public class Game : MonoBehaviour
         enemyHealthDisplay.GetComponent<TextMeshProUGUI>();
         levelDisplay.GetComponent<TextMeshProUGUI>();
 
-
+        StartCoroutine(passiveDamageStart());
 
         clickImageAnimation = clickImage.GetComponent<Animation>();
 
@@ -154,6 +157,8 @@ public class Game : MonoBehaviour
             }
         }
         //---------------------------------------------------------------------
+
+
         UpdateDisplay();
         
     }
@@ -238,7 +243,7 @@ public class Game : MonoBehaviour
             if (tempHealth == 0) // change picture + add vibes when enemy dies
             {
                 clickImageAnimation.Play("deathAnimation");
-                Invoke("RandomizeEnemyImage", 0.5f); // wait 30 frames before running method
+                Invoke("RandomizeEnemyImage", 0.5f); // wait 30 frames before running method (half a second)
             }
 
             //playerData.clickTotal = playerData.clickTotal + playerData.clickMultiplier;
@@ -248,7 +253,30 @@ public class Game : MonoBehaviour
     } //end attack() function
 
             
+    private IEnumerator passiveDamageStart()
+    {
+        while(true)
+        {
+            yield return new WaitForSeconds(0.05f);
 
+            float enemyTempHealth = data.enemy.GetHealth();
+            float passiveDamage = data.player.passiveDamage;
+
+            enemyTempHealth -= (passiveDamage / 20);
+
+            if (enemyTempHealth < 0)
+                enemyTempHealth = 0;
+
+            data.enemy.SetHealth(enemyTempHealth);
+
+            if (enemyTempHealth == 0) // change picture + add vibes when enemy dies
+            {
+                clickImageAnimation.Play("deathAnimation");
+                Invoke("RandomizeEnemyImage", 0.5f); // wait 30 frames before running method (half a second)
+                yield return new WaitForSeconds(0.5f); // don't run passive damage while animation is playing
+            }
+        }
+    }
 
     private void RandomizeEnemyImage()
     {
