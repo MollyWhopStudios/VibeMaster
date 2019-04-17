@@ -25,7 +25,7 @@ public class PlayerData
     [DataMember]
     public int critMultiplier;
     [DataMember]
-    public int passiveGain;
+    public int passiveDamage;
 
     // Player Data of enemy level
     // saves and loads to file
@@ -54,7 +54,7 @@ public class PlayerData
         clickMultiplier = 1;
         critChance = 1f;
         critMultiplier = 3;
-        passiveGain = 0;
+        passiveDamage = 0;
         enemyLevel = 1;
     }
 
@@ -64,7 +64,7 @@ public class PlayerData
     public int[] clickUpgradeValue   = { 1, 10, 100, 1000, 10000 };
     public int[] critUpgradeCost     = { 10, 1000, 1000, 10000, 100000 };
     public float[] critUpgradeValue  = { 0.5f, 1.0f, 5.0f, 7.5f, 10.0f };
-    public int[] passiveUpgradeCost  = { 1000, 10000, 100000, 1000000, 100000000 };
+    public int[] passiveUpgradeCost  = { 100, 1000, 10000, 100000, 10000000 };
     public int[] passiveUpgradeValue = { 3, 30, 100, 500, 10000 };
 
     public int GetUpgradeCost(int upgrade)
@@ -119,10 +119,12 @@ public class PlayerData
     public void PassiveUpgrade()
     {
         int cost = passiveUpgradeCost[shopUpgradeLevel[(int)Upgrades.passive]];
-        if (click >= cost && critChance < 100)
+        if (click >= cost)
         {
             click = click - cost;
             // TODO: add passive clicks
+            passiveDamage = passiveDamage + passiveUpgradeValue[shopUpgradeLevel[(int)Upgrades.passive]];
+            UseUpgrade((int)Upgrades.passive);
         }
     }
 
@@ -139,7 +141,7 @@ public class PlayerData
         data.clickMultiplier = clickMultiplier;
         data.critChance = critChance;
         data.critMultiplier = critMultiplier;
-        data.passiveGain = passiveGain;
+        data.passiveDamage = passiveDamage;
 
         data.enemyLevel = enemyLevel;
 
@@ -184,7 +186,7 @@ public class PlayerData
         clickMultiplier = newData.clickMultiplier;
         critChance = newData.critChance;
         critMultiplier = newData.critMultiplier;
-        passiveGain = newData.passiveGain;
+        passiveDamage = newData.passiveDamage;
 
         enemyLevel = newData.enemyLevel;
     }

@@ -89,9 +89,9 @@ public class MusicPlayer : MonoBehaviour
             currentSong.Play();
         }
 
-        songNameDisplay.text = currentSong.clip.name;
+        songNameDisplay.text = currentSong.clip.name; //display name of song
 
-        volumeDisplay.text = string.Format("{0:0,%}", Math.Round((volume * 1000)));
+        volumeDisplay.text = string.Format("{0:0,%}", Math.Round((volume * 1000))); //update volume as it changes
 
         
 
@@ -109,6 +109,8 @@ public class MusicPlayer : MonoBehaviour
         currentSong.clip = trackList[songTracker];
         currentSong.volume = volume;
         currentSong.Play();
+
+        volumeAnimation(volumeChange);
     }
 
     public void PrevSong()
@@ -122,6 +124,8 @@ public class MusicPlayer : MonoBehaviour
         currentSong.clip = trackList[songTracker];
         currentSong.volume = volume;
         currentSong.Play();
+
+        volumeAnimation(volumeChange);
     }
 
 
@@ -186,13 +190,16 @@ public class MusicPlayer : MonoBehaviour
             volume += 0.025f;
             currentSong.volume = volume;
 
-            if (currentSong.volume > 1)
+            if (currentSong.volume == 1)
             {
                 volume = 1;
                 currentSong.volume = volume;
             }
         }
 
+        volumeAnimation(volumeChange);
+
+        /*
         if (volumeChange.isPlaying)
         {
             volumeChange.Stop();
@@ -200,7 +207,7 @@ public class MusicPlayer : MonoBehaviour
         }
         else
             volumeChange.Play("volumeChangeAnimation");
-
+            */
     }
 
     public void VolumeDown()
@@ -217,6 +224,9 @@ public class MusicPlayer : MonoBehaviour
             }
         }
 
+        volumeAnimation(volumeChange);
+
+        /*
         if(volumeChange.isPlaying)
         {
             volumeChange.Stop();
@@ -224,6 +234,7 @@ public class MusicPlayer : MonoBehaviour
         }
         else
             volumeChange.Play("volumeChangeAnimation");
+            */
     }
 
     public bool isPlaying()
@@ -239,16 +250,16 @@ public class MusicPlayer : MonoBehaviour
             yield return new WaitForSeconds(0.03f);
         }
 
-        yield return new WaitForSeconds(2);
-
         currentSong.Stop();
+
+        yield return new WaitForSeconds(2);
 
         StopCoroutine(FadeO());
     }
-
+    
     private IEnumerator FadeI()
     {
-        yield return new WaitForSeconds(1);
+        yield return new WaitForSeconds(0.5f);
 
         while (currentSong.volume < volume)
         {
@@ -257,6 +268,17 @@ public class MusicPlayer : MonoBehaviour
         }
 
         StopCoroutine(FadeI());
+    }
+
+    public static void volumeAnimation(Animation volumeChange)
+    {
+        if (volumeChange.isPlaying)
+        {
+            volumeChange.Stop();
+            volumeChange.Play("volumeChangeAnimation");
+        }
+        else
+            volumeChange.Play("volumeChangeAnimation");
     }
 
 }
