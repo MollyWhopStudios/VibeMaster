@@ -33,9 +33,10 @@ public class BH_Enemy : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        CountDownAndShoot();
+        //CountDownAndShoot();
     }
-
+    
+    /* No Projectiles
     private void CountDownAndShoot()
     {
         shotCounter -= Time.deltaTime;
@@ -58,7 +59,7 @@ public class BH_Enemy : MonoBehaviour
         // reset counter
         shotCounter = UnityEngine.Random.Range(minTimeBetweenShots, maxTimeBetweenShots);
     }
-
+    */
     private void OnTriggerEnter2D(Collider2D other)
     {
         BH_DamageDealer damageDealer = other.gameObject.GetComponent<BH_DamageDealer>();

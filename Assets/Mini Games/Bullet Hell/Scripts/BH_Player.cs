@@ -16,10 +16,12 @@ public class BH_Player : MonoBehaviour
     [SerializeField] AudioClip shootSound;
     [SerializeField] [Range(0, 1)] float shootSoundVolume = 0.4f;
 
+    /* No Projectiles
     [Header("Projectile")]
     [SerializeField] GameObject laserPrefab;
     [SerializeField] float projectileSpeed = 30f;
     [SerializeField] float projectileFiringPeriod = 0.1f;
+    */
 
     [Header("Player Movement")]
     [SerializeField] float paddingLeft = 0.75f;
@@ -40,7 +42,7 @@ public class BH_Player : MonoBehaviour
     void Update()
     {
         Move();
-        Fire();
+        //Fire();
     }
 
     private void OnTriggerEnter2D(Collider2D other)
@@ -69,6 +71,7 @@ public class BH_Player : MonoBehaviour
         Destroy(explosion, durationOfExplosion);
     }
 
+    /* No Projectiles
     IEnumerator FireContinuosly()
     {
         while (true)
@@ -93,7 +96,7 @@ public class BH_Player : MonoBehaviour
             StopCoroutine(firingCoroutine);
         }
     }
-
+    */
     private void Move()
     {
         float deltaX = Input.GetAxis("Horizontal") * Time.deltaTime * moveSpeed;
