@@ -5962,6 +5962,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   data: {fileID: 1525886999}
   clickTotalText: {fileID: 1290258010}
+  passiveDamageText: {fileID: 0}
 --- !u!1001 &1761669571
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -8284,7 +8285,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1642029465}
-        m_MethodName: LoadBulletHellScreen
+        m_MethodName: LoadLevel1
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

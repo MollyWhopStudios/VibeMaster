@@ -21,6 +21,6 @@ EditorBuildSettings:
     path: Assets/Scenes/Mini Games.unity
     guid: b42d3018aecac2e4f970b4e024cf7cc0
   - enabled: 1
-    path: Assets/Scenes/Bullet Hell.unity
+    path: Assets/Scenes/Level 1.unity
     guid: d504880f9163f81478b3e5f4a80ab728
   m_configObjects: {}
