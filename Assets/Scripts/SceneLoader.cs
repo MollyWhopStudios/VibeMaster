@@ -11,8 +11,10 @@ public class SceneLoader : MonoBehaviour
     public GameObject statsPanel;
     public GameObject miniMenuPanel;
     public GameObject musicPanel;
+    public GameObject miniGamePanel;
 
     bool musicPanelOn = false; // for using same button to open and close music panel
+    bool miniGamePanelOn = false; // for using same button to open and close mini game panel
 
     public AudioSource shopSound;
     public AudioSource miniMenuSound;
@@ -86,6 +88,22 @@ public class SceneLoader : MonoBehaviour
         miniMenuSound.Play();
         slide.Play("miniMenuPanelSlideOff");
     }
+
+    public void MiniGamePanelAnimation()
+    {
+        slide = miniGamePanel.GetComponent<Animation>();
+        if (miniGamePanelOn)
+        {
+            slide.Play("miniGamePanelSlideOff");
+            miniGamePanelOn = false;
+        }
+        else
+        {
+            slide.Play("miniGamePanelSlide");
+            miniGamePanelOn = true;
+        }
+    }
+
 
     public void LoadNextScene()
     {
