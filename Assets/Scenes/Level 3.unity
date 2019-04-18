@@ -413,6 +413,36 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b482bce277991544cb7ad410f36d3d44, type: 3}
+--- !u!1 &961953505
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 2658338025123734313}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 961953506}
+  m_Layer: 0
+  m_Name: Background (Missing Prefab)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &961953506
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 2658338025123734313}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 961953505}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 11
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1133688867
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -10426,7 +10456,7 @@ PrefabInstance:
     - target: {fileID: 6578308666329256958, guid: 7324bcdac5950ee48ba0e9ed01610717,
         type: 3}
       propertyPath: m_RootOrder
-      value: 11
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 6578308666329256958, guid: 7324bcdac5950ee48ba0e9ed01610717,
         type: 3}
@@ -10511,6 +10541,35 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8016094067700330433, guid: bd3fa6c70c353384f9e040201976dbb7,
+        type: 3}
+      propertyPath: waveConfigs.Array.data[0]
+      value: 
+      objectReference: {fileID: 11400000, guid: 4badbaf20dc6d1447a93f3dc1d315806,
+        type: 2}
+    - target: {fileID: 8016094067700330433, guid: bd3fa6c70c353384f9e040201976dbb7,
+        type: 3}
+      propertyPath: waveConfigs.Array.data[1]
+      value: 
+      objectReference: {fileID: 11400000, guid: 1a51b37447581844aa73440dbe421212,
+        type: 2}
+    - target: {fileID: 8016094067700330433, guid: bd3fa6c70c353384f9e040201976dbb7,
+        type: 3}
+      propertyPath: waveConfigs.Array.data[2]
+      value: 
+      objectReference: {fileID: 11400000, guid: 20a3aff0a3a9d514c99f93aa1bc2ce11,
+        type: 2}
+    - target: {fileID: 8016094067700330433, guid: bd3fa6c70c353384f9e040201976dbb7,
+        type: 3}
+      propertyPath: waveConfigs.Array.data[3]
+      value: 
+      objectReference: {fileID: 11400000, guid: 04cbd7a88f0a3294fbb30b5eb282573b,
+        type: 2}
+    - target: {fileID: 8016094067700330433, guid: bd3fa6c70c353384f9e040201976dbb7,
+        type: 3}
+      propertyPath: startingWave
+      value: 3
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: bd3fa6c70c353384f9e040201976dbb7, type: 3}
