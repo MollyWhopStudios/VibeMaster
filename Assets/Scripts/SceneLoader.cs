@@ -106,37 +106,20 @@ public class SceneLoader : MonoBehaviour
         //currentSong.NextSong();
 
     }
-
-    public void LoadOptionsScreen()
-    {
-        SceneManager.LoadScene("Options");
-
-        
-    }
-
-    public void LoadShopScreen()
-    {
-        SceneManager.LoadScene("Shop");
-    }
-
-    public void LoadStatsScreen()
-    {
-        SceneManager.LoadScene("Stats");
-    }
-
-    public void LoadMiniGameScreen()
-    {
-        SceneManager.LoadScene("Mini Games");
-    }
-    /*
-    public void LoadTowerDefenseScreen()
+    
+    public void LoadLevel1()
     {
         SceneManager.LoadScene("Level 1");
     }
-    */
-    public void LoadBulletHellScreen()
+
+    public void LoadLevel2()
     {
-        SceneManager.LoadScene("Bullet Hell");
+        SceneManager.LoadScene("Level 2");
+    }
+
+    public void LoadLevel3()
+    {
+        SceneManager.LoadScene("Level 3");
     }
 
     public void LoadBulletHellGameOverScreen()
