@@ -14,7 +14,9 @@ public class SceneLoader : MonoBehaviour
     public GameObject miniGamePanel;
 
     bool musicPanelOn = false; // for using same button to open and close music panel
-    bool miniGamePanelOn = false; // for using same button to open and mini game panel
+
+    bool miniGamePanelOn = false; // for using same button to open and close mini game panel
+
 
     public AudioSource shopSound;
     public AudioSource miniMenuSound;
@@ -103,6 +105,7 @@ public class SceneLoader : MonoBehaviour
             miniGamePanelOn = true;
         }
     }
+
 
     public void LoadNextScene()
     {
