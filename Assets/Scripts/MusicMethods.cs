@@ -4,47 +4,41 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 
-public class MusicPlayer : MonoBehaviour
+public class MusicMethods : MonoBehaviour
 {
-
     public AudioClip[] trackList;
-
     public AudioSource currentSong;
-
-    
     public TextMeshProUGUI songNameDisplay;
-
     public TextMeshProUGUI volumeDisplay;
 
-    Animation volumeChange;
+    public Animation volumeChange;
 
-    int songTracker = 0;
-    float volume;
+    public int songTracker = 0;
+    public float volume;
     public bool pause = false;
 
-
-    private void Awake()
+    private void Update()
     {
-        SetUpSingleton();
+        //if (!currentSong.isPlaying && !pause)
+        //{
+        //    if (songTracker == (trackList.Length - 1))
+        //        songTracker = 0;
+        //    else
+        //        songTracker++;
 
-        //DontDestroyOnLoad(transform.gameObject);
-        currentSong = GetComponent<AudioSource>();
+
+        //    currentSong.Stop();
+        //    currentSong.clip = trackList[songTracker];
+        //    currentSong.volume = volume;
+        //    currentSong.Play();
+        //}
+
+        songNameDisplay.text = currentSong.clip.name; //display name of song
+
+        volumeDisplay.text = string.Format("{0:0,%}", Math.Round((volume * 1000))); //update volume as it changes
+
+        //volumeDisplay.text = volume * 100 + "%";
     }
-
-
-    private void SetUpSingleton()
-    {
-        startMusic();
-        if (FindObjectsOfType(GetType()).Length > 1)
-        {
-            Destroy(gameObject);
-        }
-        else
-        {
-            DontDestroyOnLoad(gameObject);
-        }
-    }
-   
 
     public void startMusic()
     {
@@ -68,29 +62,6 @@ public class MusicPlayer : MonoBehaviour
         currentSong.Play();
         StartCoroutine(FadeI());
 
-    }
-
-    private void Update()
-    {
-        if (!currentSong.isPlaying && !pause)
-        {
-            if (songTracker == (trackList.Length - 1))
-                songTracker = 0;
-            else
-                songTracker++;
-
-            
-            currentSong.Stop();
-            currentSong.clip = trackList[songTracker];
-            currentSong.volume = volume;
-            currentSong.Play();
-        }
-
-        songNameDisplay.text = currentSong.clip.name; //display name of song
-
-        volumeDisplay.text = string.Format("{0:0,%}", Math.Round((volume * 1000))); //update volume as it changes
-
-        //volumeDisplay.text = volume * 100 + "%";
     }
 
     public void NextSong()
@@ -123,8 +94,6 @@ public class MusicPlayer : MonoBehaviour
         volumeAnimation(volumeChange);
     }
 
-
-
     public void PlaySong()
     {
         if (currentSong.clip.name == trackList[songTracker].name && !pause)
@@ -144,7 +113,6 @@ public class MusicPlayer : MonoBehaviour
         currentSong.Pause();
         pause = true;
     }
-
 
     public void SetVolume(float newVolume)
     {
@@ -180,7 +148,7 @@ public class MusicPlayer : MonoBehaviour
 
     public void VolumeUp()
     {
-        if(currentSong.volume < 1)
+        if (currentSong.volume < 1)
         {
             volume += 0.025f;
             currentSong.volume = volume;
@@ -207,7 +175,7 @@ public class MusicPlayer : MonoBehaviour
 
     public void VolumeDown()
     {
-        if(volume > 0)
+        if (volume > 0)
         {
             volume -= 0.025f;
             currentSong.volume = volume;
@@ -251,7 +219,7 @@ public class MusicPlayer : MonoBehaviour
 
         StopCoroutine(FadeO());
     }
-    
+
     private IEnumerator FadeI()
     {
         yield return new WaitForSeconds(0.5f);
@@ -275,5 +243,4 @@ public class MusicPlayer : MonoBehaviour
         else
             volumeChange.Play("volumeChangeAnimation");
     }
-
 }

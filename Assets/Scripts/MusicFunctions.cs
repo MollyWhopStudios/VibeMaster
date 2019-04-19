@@ -9,9 +9,6 @@ public class MusicFunctions : MonoBehaviour
     private MusicPlayer currentSong;
 
     
-
-
-
     // Start is called before the first frame update
     void Start()
     {

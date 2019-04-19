@@ -24,11 +24,11 @@ public class SceneLoader : MonoBehaviour
 
     Animation slide;
 
-    private MusicPlayer currentSong;
+    //private MusicPlayer currentSong;
 
     private void Start()
     {
-        currentSong = FindObjectOfType<MusicPlayer>();
+        //currentSong = FindObjectOfType<MusicPlayer>();
     }
 
     public void musicPanelSlide()
@@ -116,13 +116,14 @@ public class SceneLoader : MonoBehaviour
     public void LoadMenuScreen()
     {
         SceneManager.LoadScene("Main Menu");
+
     }
 
     public void LoadGameScreen()
     {
         SceneManager.LoadScene("Game");
 
-        currentSong.FadeOut();
+        //currentSong.FadeOut();
         //currentSong.NextSong();
 
     }
