@@ -6306,7 +6306,8 @@ PrefabInstance:
       propertyPath: m_Enabled
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 7075047963742757111, guid: b482bce277991544cb7ad410f36d3d44, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: b482bce277991544cb7ad410f36d3d44, type: 3}
 --- !u!82 &1545300748 stripped
 AudioSource:
@@ -7790,7 +7791,8 @@ PrefabInstance:
       propertyPath: m_Enabled
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 1490461768, guid: 99bcbc952de15d941b39fbb7c86bc2d5, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 99bcbc952de15d941b39fbb7c86bc2d5, type: 3}
 --- !u!1 &1961661461 stripped
 GameObject:
@@ -7814,6 +7816,9 @@ MonoBehaviour:
   currentSong: {fileID: 1545300748}
   songNameDisplay: {fileID: 0}
   volumeDisplay: {fileID: 0}
+  volumeChange: {fileID: 0}
+  songTracker: 0
+  volume: 0
   pause: 0
 --- !u!114 &1967577554 stripped
 MonoBehaviour:
