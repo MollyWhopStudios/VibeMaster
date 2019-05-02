@@ -9,7 +9,8 @@ public class Game : MonoBehaviour
     // -------------------------------------------------------
     public GameObject critText;   // animation to play when crit
     public GameObject clickImage; // main button to acquire clicks
-
+    public GameObject randomEventButton; // for random event generation
+     
     [SerializeField]
     bool passiveDamageIsRunning = true; // turn on and off passive damage
 
@@ -95,6 +96,7 @@ public class Game : MonoBehaviour
     public TextMeshProUGUI score;
 
     Animation clickImageAnimation;
+    Animation randomEventAnimation;
 
     // enemy data mechanics --------------------------------------------------------------------------------
     [Header("Enemy Data")]
@@ -137,11 +139,24 @@ public class Game : MonoBehaviour
 
         clickImageAnimation = clickImage.GetComponent<Animation>();
 
+        randomEventAnimation = randomEventButton.GetComponent<Animation>();
+
         ticketTextDisplay.GetComponent<TextMeshProUGUI>(); //get component for ticket number content display
     }
 
     void Update()
     {
+
+        // play a random event
+        if (!randomEventAnimation.isPlaying)
+        {
+            randomizer = Random.Range(1, 1500); //chances of event appearing
+
+            if(randomizer == 1)
+                randomEventAnimation.Play("randomEventBeetle");
+        }
+        
+
         // ---------- mechanic to randomize idle enemy animation -------------
         if (!clickImageAnimation.isPlaying)
         {
@@ -170,18 +185,30 @@ public class Game : MonoBehaviour
         levelDisplay.text = "Level: " + data.enemy.GetLevel() + " - " + currentEnemyName;
         healthbar.fillAmount = data.enemy.GetHealth() / data.enemy.GetMaxHealth();
 
-        ticketTextDisplay.text = "x " + 0;
+        ticketTextDisplay.text = "x " + data.player.tickets;
     }
 
     public void ButtonClick()
     {
         if (data.enemy.GetHealth() > 0)
+        {
+            data.player.screenClicks++;
             Attack();
+        }
+            
 
         tempImage.transform.position = new Vector2(originX, originY);
 
 
         //data.player.clickTotal++;
+    }
+
+    public void ticketClick()
+    {
+        data.player.tickets++;
+        data.player.ticketTotal++;
+        randomEventAnimation.Stop();
+        randomEventAnimation.Play("randomEventReset");
     }
 
     private void Attack()
@@ -278,6 +305,7 @@ public class Game : MonoBehaviour
         }
     }
 
+
     private void RandomizeEnemyImage()
     {
         data.player.click += (data.enemy.GetLevel() * data.enemy.GetBaseReward() * data.enemy.GetRewardScaling());
@@ -325,7 +353,9 @@ public class Game : MonoBehaviour
                 tempImage.sprite = dolphinEnemy3;
                 currentEnemyName = "Didactic Dolphin Squad Three";
                 break;
+                
             case 5:
+                /*
                 currentEnemy = hotboydogEnemy;
                 //currentCrit1 = null;
                 //currentCrit2 = null;
@@ -333,6 +363,7 @@ public class Game : MonoBehaviour
                 tempImage.sprite = hotboydogEnemy;
                 currentEnemyName = "Halcyon HotDog Man";
                 break;
+                */
             case 6:
                 currentEnemy = kingPalmEnemy1;
                 currentCrit1 = critPalm1Red;
@@ -364,7 +395,7 @@ public class Game : MonoBehaviour
                 currentCrit2 = critBeetle2;
                 currentCrit3 = critBeetle3;
                 tempImage.sprite = beetle;
-                currentEnemyName = "Big Ballin Beetle";
+                currentEnemyName = "Boolin Beetle";
                 break;
 
             case 10:
@@ -384,7 +415,8 @@ public class Game : MonoBehaviour
                 tempImage.sprite = VHS;
                 currentEnemyName = "Volumptuous VHS";
                 break;
-
         } //end switch
+
     } // end RandomizeEnemyImage() function
+
 } // end main
