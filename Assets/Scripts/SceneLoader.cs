@@ -7,6 +7,8 @@ public class SceneLoader : MonoBehaviour
 {
     [SerializeField] float gameOverDelayInSeconds = 3f;
 
+    public PlayerManager data;
+
     public GameObject shopPanel;
     public GameObject statsPanel;
     public GameObject miniMenuPanel;
@@ -28,6 +30,8 @@ public class SceneLoader : MonoBehaviour
 
     private void Start()
     {
+        data = FindObjectOfType<PlayerManager>();
+
         currentSong = FindObjectOfType<MusicPlayer>();
     }
 
@@ -129,7 +133,13 @@ public class SceneLoader : MonoBehaviour
     
     public void LoadLevel1()
     {
-        SceneManager.LoadScene("Level 1");
+        if(data.player.tickets > 0)
+        {
+            data.player.tickets--;
+            SceneManager.LoadScene("Level 1");
+            currentSong.FadeOut();
+        }
+        
     }
 
     public void LoadLevel2()

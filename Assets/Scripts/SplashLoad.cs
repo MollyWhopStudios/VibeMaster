@@ -39,14 +39,16 @@ public class SplashLoad : MonoBehaviour
         punch3.Play();
         yield return new WaitForSeconds(0.5f);
 
+        /*
         a = Back.GetComponent<Animation>();
         a.Play("TySlide");
         scream1.Play();
         yield return new WaitForSeconds(3f);
+        */
 
         a = Background.GetComponent<Animation>();
         a.Play("MWBackFade");
-        scream2.Play();
+        //scream2.Play();
         yield return new WaitForSeconds(3f);
 
 

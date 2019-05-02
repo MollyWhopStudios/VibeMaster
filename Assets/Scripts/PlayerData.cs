@@ -26,6 +26,13 @@ public class PlayerData
     public int critMultiplier;
     [DataMember]
     public int passiveDamage;
+    [DataMember]
+    public int screenClicks;
+    [DataMember]
+    public int tickets;
+    [DataMember]
+    public int ticketTotal;
+
 
     // Player Data of enemy level
     // saves and loads to file
@@ -56,15 +63,18 @@ public class PlayerData
         critMultiplier = 3;
         passiveDamage = 0;
         enemyLevel = 1;
+        screenClicks = 0;
+        tickets = 0;
+        ticketTotal = 0;
     }
 
     public int GetUpgradeTier(int upgrade) { return shopUpgradeLevel[upgrade]; }
 
-    public int[] clickUpgradeCost    = { 10, 1000, 1000, 10000, 100000 };
+    public int[] clickUpgradeCost    = { 10, 100, 100, 1000, 10000 };
     public int[] clickUpgradeValue   = { 1, 10, 100, 1000, 10000 };
-    public int[] critUpgradeCost     = { 10, 1000, 1000, 10000, 100000 };
+    public int[] critUpgradeCost     = { 10, 100, 100, 1000, 10000 };
     public float[] critUpgradeValue  = { 0.5f, 1.0f, 5.0f, 7.5f, 10.0f };
-    public int[] passiveUpgradeCost  = { 100, 1000, 10000, 100000, 10000000 };
+    public int[] passiveUpgradeCost  = { 10, 100, 1000, 10000, 1000000 };
     public int[] passiveUpgradeValue = { 3, 30, 100, 500, 10000 };
 
     public int GetUpgradeCost(int upgrade)
@@ -142,6 +152,9 @@ public class PlayerData
         data.critChance = critChance;
         data.critMultiplier = critMultiplier;
         data.passiveDamage = passiveDamage;
+        data.screenClicks = screenClicks;
+        data.tickets = tickets;
+        data.ticketTotal = ticketTotal;
 
         data.enemyLevel = enemyLevel;
 
@@ -187,6 +200,9 @@ public class PlayerData
         critChance = newData.critChance;
         critMultiplier = newData.critMultiplier;
         passiveDamage = newData.passiveDamage;
+        screenClicks = newData.screenClicks;
+        tickets = newData.tickets;
+        ticketTotal = newData.ticketTotal;
 
         enemyLevel = newData.enemyLevel;
     }

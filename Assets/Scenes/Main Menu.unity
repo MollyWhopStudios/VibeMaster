@@ -193,7 +193,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 21300000, guid: d5b6e82dd37c40d4e96502999fcdc83f, type: 3}
+  m_Sprite: {fileID: 21300000, guid: bb7867fc66ddfb149916f264ace731e0, type: 3}
   m_Type: 0
   m_PreserveAspect: 1
   m_FillCenter: 1
@@ -302,7 +302,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 21300000, guid: d5b6e82dd37c40d4e96502999fcdc83f, type: 3}
+  m_Sprite: {fileID: 21300000, guid: bb7867fc66ddfb149916f264ace731e0, type: 3}
   m_Type: 0
   m_PreserveAspect: 1
   m_FillCenter: 1
@@ -1433,8 +1433,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 1051.7, y: -54.1}
-  m_SizeDelta: {x: 179.2, y: 100}
+  m_AnchoredPosition: {x: 1062, y: -45.9}
+  m_SizeDelta: {x: 159.3, y: 117.7}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!111 &1312865945
 Animation:
@@ -1476,7 +1476,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 21300000, guid: 7ef4cff9271d52948a18b105471c5da7, type: 3}
+  m_Sprite: {fileID: 21300000, guid: c4d863cf0857b5b4691677de9b3fdc3d, type: 3}
   m_Type: 0
   m_PreserveAspect: 1
   m_FillCenter: 1
@@ -1528,8 +1528,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 1013, y: -50.4}
-  m_SizeDelta: {x: 14.3, y: 22}
+  m_AnchoredPosition: {x: 1020, y: -43.5}
+  m_SizeDelta: {x: 17, y: 17.8}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1406484548
 MonoBehaviour:
@@ -1551,7 +1551,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 21300000, guid: 9a086308ab40d374fa417ceaf604cc20, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 58f46042fc9f78f499f72147f2d2fca4, type: 3}
   m_Type: 0
   m_PreserveAspect: 1
   m_FillCenter: 1
@@ -1825,6 +1825,7 @@ MonoBehaviour:
   statsPanel: {fileID: 0}
   miniMenuPanel: {fileID: 0}
   musicPanel: {fileID: 0}
+  miniGamePanel: {fileID: 0}
   shopSound: {fileID: 0}
   miniMenuSound: {fileID: 0}
   statsSound: {fileID: 0}
@@ -3046,7 +3047,7 @@ PrefabInstance:
         type: 3}
       propertyPath: m_audioClip
       value: 
-      objectReference: {fileID: 8300000, guid: 8a7517d4b8c488b44bdee09068faeace, type: 3}
+      objectReference: {fileID: 8300000, guid: 50e3869ffd0b00e4aa01d9bbe4c406c9, type: 3}
     - target: {fileID: 572486754048283223, guid: b482bce277991544cb7ad410f36d3d44,
         type: 3}
       propertyPath: Loop
